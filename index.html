@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Check YO' Self</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <header>
+    <h1>Check <span>YO'</span> Self</h1>
+    <div>
+      <img src="images/search.svg" id="search-input-btn">
+      <input type="text" id="search-input">
+    </div>
+  </header>
+  <nav>
+    <form>
+      <label id="title-input-label" for="title-input">Task Title</label>
+      <input type="text" id="task-title-input">
+      <label id="task-input-label" for="task-input">Task Item</label>
+      <input type="text" id="task-title-input">
+      <img src="images/plus-sign.svg" id="add-task-item-btn" alt="Click here to create a new task item!">
+      <button class="nav-btns" id="make-task-btn">Make Task List</button>
+      <button class="nav-btns" id="clear-btn">Clear All</button>
+      <hr>
+      <button class="nav-btns" id="filter-btn">Filter by Urgency</button>
+    </form>
+  </nav>
+  <main id="main">
+    <p id="user-prompt-text">Type in a task list title and add tasks to the left to create a new task list here!</p>
+    <article class="task-list">
+      <header>
+        <h3 id="task-list-title">${task.title}</h3>
+      </header>
+      <main id="task-list-body">
+        <p id="task-list-items"><img id="checkbox-status-svg" src="images/${task.status}" alt="Click here to check off this task!">${task.todos}</p>
+      </main>
+      <footer id="task-list-footer">
+        <img src="images/urgent.svg" id="task-list-urgent-btn" alt="Click here to make this task urgent">
+        <p id="task-list-urgent-msg">Urgent</p>
+        <img src="images/delete.svg" id="task-list-delete-btn" alt="Click here to delete this task">
+        <p id="task-list-delete-msg">Delete</p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
