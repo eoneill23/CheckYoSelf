@@ -48,15 +48,16 @@ body {
 
 .header__input {
   width: 100%;
+  border:1px solid white;
+  border-radius: 0 3px 3px 0;
 }
 
 .header__img {
   height: 100%;
   width: 60px;
-  padding: .5em;
-  background-color: #F3F6F7;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  padding: .75em;
+  background-color: #C8D3D9;
+  border-radius: 3px 0 0 3px;
 }
 
 /*-------------------Nav----------------*/
@@ -127,7 +128,7 @@ form >* {
 }
 
 hr {
-  color: #1F1F3D;
+  border-color: #3E6577;
 }
 
 .form__divFilter {
@@ -143,15 +144,20 @@ hr {
 .main {
   grid-area: main;
   padding: 2em;
+  padding: 30px;
+  height: auto;
+  columns: 2 250px;
+  column-gap: 30px;
 }
 
 .main__article{
-  columns: 2 40%;
-  column-gap: 1em;
-  background-color: #F9FDFF;
-  border: 1px solid #C7D3D6;
-  width: 50%;
-  padding: .2em;
+  width: 100%;
+  border: 2px solid #C7D3D8;
+  padding: 10px 0 0 0;
+  min-height: 250px;
+  background-color: #FAFDFF;
+  margin-bottom: 30px;
+  break-inside: avoid;
 }
 
 .main__para {
