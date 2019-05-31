@@ -52,6 +52,10 @@ body {
   border-radius: 0 3px 3px 0;
 }
 
+::placeholder {
+  padding-left: .25em;
+}
+
 .header__img {
   height: 100%;
   width: 60px;
@@ -97,12 +101,6 @@ form >* {
   margin-bottom: 0;
 }
 
-.form-btns {
-  color: white;
-  background-color: #1F1F3D;
-  border-color: #1F1F3D;
-}
-
 .form__div {
   display: flex;
 }
@@ -144,17 +142,16 @@ hr {
 .main {
   grid-area: main;
   padding: 2em;
-  padding: 30px;
   height: auto;
   columns: 2 250px;
   column-gap: 30px;
 }
 
-.main__article{
+.main__article {
   width: 100%;
   border: 2px solid #C7D3D8;
   padding: 10px 0 0 0;
-  min-height: 250px;
+  min-height: 200px;
   background-color: #FAFDFF;
   margin-bottom: 30px;
   break-inside: avoid;
@@ -206,4 +203,27 @@ hr {
   height: 20px;
   width: 20px;
   margin-left: 30%;
+}
+
+/*-------------Urgent Card----------------*/
+
+.urgent__card {
+  background-color: #FFE89D;
+  border: 2px solid #FFC30C;
+}
+
+.urgent__card header {
+  border-bottom: 2px solid #FFC30C;
+}
+
+.urgent__card footer {
+  border-top: 2px solid #FFC30C;
+}
+
+.urgent__card .card__footerMsgUrgent {
+  color: #B23A25;
+}
+
+.urgent__card img.card__footerUrgent {
+  content: url('images/urgent-active.svg');
 }

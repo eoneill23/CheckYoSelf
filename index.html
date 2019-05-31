@@ -12,27 +12,27 @@
     <h1 class="header__h1">Check <span class="header__span">YO'</span> Self</h1>
     <div class="header__div">
       <img src="images/search.svg" class="header__img">
-      <input type="text" class="header__input">
+      <input type="text" class="header__input" placeholder="Search">
     </div>
   </header>
   <nav class="nav">
     <form class="nav__form form">
-      <label class="form__labels" id="form__labelTitle" for="form__inputTitle">Task Title</label>
-      <input type="text" class="form__inputs" id="form__inputTitle">
-      <label class="form__labels" id="form__labelTaskItem" for="task-input">Task Item</label>
+      <label class="form__labels form__labelTitle" for="form__inputTitle">Task Title</label>
+      <input type="text" class="form__inputs form__inputTitle">
+      <label class="form__labels form__labelTaskItem" for="task-input">Task Item</label>
       <div class="div form__div form__divAddTask">
-        <input type="text" class="div__inputs div__inputAddTask" id="div__inputAddTask">
-        <img src="images/plus-sign.svg" class="div__imgs" id="div__imgsAddTask" alt="Click here to create a new task item!">
+        <input type="text" class="div__inputs div__inputAddTask div__inputAddTask">
+        <img src="images/plus-sign.svg" class="div__imgs div__imgsAddTask" alt="Click here to create a new task item!">
       </div>
-      <button class="form__btns form__btnsAddTask" id="form__btnAddTask">Make Task List</button>
-      <button class="form__btns form__btnsClear" id="form__btnClear">Clear All</button>
+      <button class="form__btns form__btnsAddTask">Make Task List</button>
+      <button class="form__btns form__btnsClear form__btnClear">Clear All</button>
     </form>
     <hr>
-    <div class="div form__div form__divFilter" id="filter-btn-container">
-      <button class="form__btns form__btnsFilter" id="filter-btn">Filter by Urgency</button>
+    <div class="div form__div form__divFilter">
+      <button class="form__btns form__btnsFilter">Filter by Urgency</button>
     </div>
   </nav>
-  <main class="main masonry">
+  <main class="main">
     <p class="main__para"></p>
     <article class="main__article card" data-id="">
       <header class="card__header">
@@ -50,16 +50,16 @@
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <img src="images/urgent.svg" class="card__footerBtn" id="card_footerUrgent" alt="Click here to make this task urgent">
+          <img src="images/urgent.svg" class="card__footerBtn card__footerUrgent" alt="Click here to make this task urgent">
           <p class="card__footerMsg">Urgent</p>
         </div>
         <div class="card__footerDiv">
-          <img src="images/delete.svg" class="card__footerBtn" id="card__footerDlt" alt="Click here to delete this task">
+          <img src="images/delete.svg" class="card__footerBtn card__footerDlt" alt="Click here to delete this task">
           <p class="card__footerMsg">Delete</p>
         </div>
       </footer>
     </article>
-    <article class="main__article card" data-id="">
+    <article class="urgent__card main__article card" data-id="">
       <header class="card__header">
         <h3 class="card__headerTitle">Todo list title goes here</h3>
       </header>
@@ -75,11 +75,11 @@
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <img src="images/urgent.svg" class="card__footerBtn" id="card_footerUrgent" alt="Click here to make this task urgent">
-          <p class="card__footerMsg">Urgent</p>
+          <img src="images/urgent.svg" class="card__footerBtn card__footerUrgent" alt="Click here to make this task urgent">
+          <p class="card__footerMsg card__footerMsgUrgent">Urgent</p>
         </div>
         <div class="card__footerDiv">
-          <img class="card__footerBtn" src="images/delete.svg"  id="card__footerDlt" alt="Click here to delete this task">
+          <img class="card__footerBtn card__footerDlt" src="images/delete.svg" alt="Click here to delete this task">
           <p class="card__footerMsg">Delete</p>
         </div>
       </footer>
