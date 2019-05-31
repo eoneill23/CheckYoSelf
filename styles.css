@@ -20,7 +20,7 @@ body {
 
 /*-------------------Header----------------*/
 
-.page-header {
+.page__header {
   grid-area: header;
   grid-template-rows: 10%;
   background-color: #1F1F3D;
@@ -30,27 +30,27 @@ body {
   padding: .75em;
 }
 
-h1 {
+.header__h1 {
   font-size: 2.5em;
   color: white;
   font-weight: 800;
 }
 
-#h1-span {
+.header-span {
   color: #FFC20C;
 }
 
-#header-input-container {
+.header__div {
   height: 100%;
   width: 25%;
   display: flex;
 }
 
-#search-input {
+.header__input {
   width: 100%;
 }
 
-#search-input-btn {
+.header__img {
   height: 100%;
   width: 60px;
   padding: .5em;
@@ -59,12 +59,12 @@ h1 {
 
 /*-------------------Nav----------------*/
 
-nav {
+.nav {
   grid-area: nav;
   background-color: #587A8A
 }
 
-.nav-btns {
+.form__btns {
   height: 50px;
   color: white;
   background-color: #1F1F3D;
@@ -73,12 +73,12 @@ nav {
   font-size: 1.5em;
 }
 
-.nav-inputs {
+.form__inputs {
   height: 50px;
   border-radius: 3px;
 }
 
-form {
+.nav__form {
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -88,7 +88,7 @@ form >* {
   margin: 1em 0 1em 0;
 }
 
-.form-labels {
+.form__labels {
   color: #F3F6F7;
   margin-bottom: 0;
 }
@@ -99,36 +99,36 @@ form >* {
   border-color: #1F1F3D;
 }
 
-#add-task {
+.form__div {
   display: flex;
 }
 
-#add-task-item-btn {
+.div__imgs {
   height: 50px;
   width: 50px;
   padding: .5em;
   background-color: #1F1F3D;
 }
 
-#add-task-item-input {
+.div__inputAddTask {
   width: 100%;
 }
 
-#clear-btn {
+.form__btnsClear {
   margin-bottom: 0;
 }
 
-#filter-btn-container {
+.form__divFilter {
   padding: 1em;
 }
 
-#filter-btn {
+.form__btnsFilter {
   width: 100%;
 }
 
 /*-------------------Main----------------*/
 
-main {
+.main {
   grid-area: main;
   padding: 2em;
 }

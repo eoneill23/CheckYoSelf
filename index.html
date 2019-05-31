@@ -8,32 +8,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <header class="page-header">
-    <h1>Check <span id="h1-span">YO'</span> Self</h1>
-    <div id="header-input-container">
-      <img src="images/search.svg" id="search-input-btn">
-      <input type="text" id="search-input">
+  <header class="page__header header">
+    <h1 class="header__h1">Check <span class="header__span">YO'</span> Self</h1>
+    <div class="header__div">
+      <img src="images/search.svg" class="header__img">
+      <input type="text" id="header__input">
     </div>
   </header>
-  <nav>
-    <form>
-      <label class="form-labels" id="title-input-label" for="title-input">Task Title</label>
-      <input type="text" class="nav-inputs" id="task-title-input">
-      <label class="form-labels" id="task-input-label" for="task-input">Task Item</label>
-      <div id="add-task">
-        <input type="text" class="nav-inputs" id="add-task-item-input">
-        <img src="images/plus-sign.svg" id="add-task-item-btn" alt="Click here to create a new task item!">
+  <nav class="nav">
+    <form class="nav__form form">
+      <label class="form__labels" id="form__labelTitle" for="form__inputTitle">Task Title</label>
+      <input type="text" class="form__inputs" id="form__inputTitle">
+      <label class="form__labels" id="form__labelTaskItem" for="task-input">Task Item</label>
+      <div class="div form__div form__divAddTask">
+        <input type="text" class="div__inputs div__inputAddTask" id="div__inputAddTask">
+        <img src="images/plus-sign.svg" class="div__imgs" id="div__imgsAddTask" alt="Click here to create a new task item!">
       </div>
-      <button class="nav-btns form-btns" id="make-task-btn">Make Task List</button>
-      <button class="nav-btns form-btns" id="clear-btn">Clear All</button>
+      <button class="form__btns form__btnsAddTask" id="form__btnAddTask">Make Task List</button>
+      <button class="form__btns form__btnsClear" id="form__btnClear">Clear All</button>
     </form>
     <hr>
-    <div id="filter-btn-container">
-      <button class="nav-btns" id="filter-btn">Filter by Urgency</button>
+    <div class="div form__div form__divFilter" id="filter-btn-container">
+      <button class="form__btns form__btnsFilter" id="filter-btn">Filter by Urgency</button>
     </div>
   </nav>
-  <main id="main">
-    <p id="user-prompt-text">Type in a task list title and add tasks to the left to create a new task list here!</p>
+  <main class="main">
+    <p class="main__para" id="main__paraPromptText">Type in a task list title and add tasks to the left to create a new task list here!</p>
     <article class="task-list" data-id="">
       <header id="task-list-header">
         <h3 id="task-list-title">Todo list title goes here</h3>
