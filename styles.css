@@ -105,7 +105,18 @@ form >* {
   display: flex;
 }
 
-.div__imgs {
+.form__ul {
+  margin: 0;
+  list-style-type: none;
+  padding-left: 1em;
+}
+
+.form__liImg {
+  height: 15px;
+  width: 15px;
+}
+
+.div__img {
   height: 50px;
   width: 50px;
   padding: .5em;
