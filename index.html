@@ -12,7 +12,7 @@
     <h1 class="header__h1">Check <span class="header__span">YO'</span> Self</h1>
     <div class="header__div">
       <img src="images/search.svg" class="header__img">
-      <input type="text" id="header__input">
+      <input type="text" class="header__input">
     </div>
   </header>
   <nav class="nav">
@@ -32,14 +32,21 @@
       <button class="form__btns form__btnsFilter" id="filter-btn">Filter by Urgency</button>
     </div>
   </nav>
-  <main class="main">
+  <main class="main masonry">
     <p class="main__para">Type in a task list title and add tasks to the left to create a new task list here!</p>
     <article class="main__article card" data-id="">
       <header class="card__header">
         <h3 class="card__headerTitle">Todo list title goes here</h3>
       </header>
       <main class="card__main">
-        <p class="card__mainPara"><img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">Task list items go here</p>
+        <div class="card__mainDiv">
+          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+          <p class="card__mainPara">Task list items go here.</p>
+        </div>
+        <div class="card__mainDiv">
+          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+          <p class="card__mainPara">Task list items go here.</p>
+        </div>
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
