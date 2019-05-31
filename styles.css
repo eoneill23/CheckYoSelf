@@ -36,7 +36,7 @@ body {
   font-weight: 800;
 }
 
-.header-span {
+.header__span {
   color: #FFC20C;
 }
 
@@ -133,43 +133,47 @@ form >* {
   padding: 2em;
 }
 
-main article{
+.main__article{
   columns: 2 40%;
   column-gap: 1em;
   width: 50%;
 }
 
-article {
+.main__article {
   border: 1px solid red;
 }
 
-article p {
+.main__para {
   margin: 0;
 }
 
-.task-list-btn {
-  height: 20px;
-  width: 20px;
-  margin-left: 30%;
-}
-
-#task-list-header {
+.card__header {
   padding: .5em;
   border-bottom: 1px solid gray;
 }
 
-#task-list-title {
+.article__headerTitle {
   margin:0 .5em 0 .5em;
 }
 
-#checkbox-status-svg {
+.card__mainImg {
   height: 15px;
   width: 15px;
 }
 
-#task-list-footer {
+.card__main {
+  padding: .5em;
+}
+
+.card__footer {
   border-top: 1px solid gray;
   padding: .5em;
   display: flex;
   justify-content: space-between;
+}
+
+.card__footerBtn {
+  height: 20px;
+  width: 20px;
+  margin-left: 30%;
 }

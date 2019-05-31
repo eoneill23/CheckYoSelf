@@ -33,22 +33,22 @@
     </div>
   </nav>
   <main class="main">
-    <p class="main__para" id="main__paraPromptText">Type in a task list title and add tasks to the left to create a new task list here!</p>
-    <article class="task-list" data-id="">
-      <header id="task-list-header">
-        <h3 id="task-list-title">Todo list title goes here</h3>
+    <p class="main__para">Type in a task list title and add tasks to the left to create a new task list here!</p>
+    <article class="main__article card" data-id="">
+      <header class="card__header">
+        <h3 class="card__headerTitle">Todo list title goes here</h3>
       </header>
-      <main id="task-list-body">
-        <p id="task-list-items"><img id="checkbox-status-svg" src="images/checkbox.svg" alt="Click here to check off this task!">Task list items go here</p>
+      <main class="card__main">
+        <p class="card__mainPara"><img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">Task list items go here</p>
       </main>
-      <footer id="task-list-footer">
-        <div id="footer-urgent-section">
-          <img src="images/urgent.svg" class="task-list-btn" id="task-list-urgent-btn" alt="Click here to make this task urgent">
-          <p id="task-list-urgent-msg">Urgent</p>
+      <footer class="card__footer">
+        <div class="card__footerDiv">
+          <img src="images/urgent.svg" class="card__footerBtn" id="card_footerUrgent" alt="Click here to make this task urgent">
+          <p class="card__footerMsg">Urgent</p>
         </div>
         <div id="footer-delete-section">
-          <img src="images/delete.svg" class="task-list-btn" id="task-list-delete-btn" alt="Click here to delete this task">
-          <p id="task-list-delete-msg">Delete</p>
+          <img src="images/delete.svg" class="card__footerBtn" id="card__footerDlt" alt="Click here to delete this task">
+          <p class="card__footerMsg">Delete</p>
         </div>
       </footer>
     </article>
