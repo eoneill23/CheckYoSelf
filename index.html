@@ -35,17 +35,21 @@
   <main id="main">
     <p id="user-prompt-text">Type in a task list title and add tasks to the left to create a new task list here!</p>
     <article class="task-list" data-id="">
-      <header>
+      <header id="task-list-header">
         <h3 id="task-list-title">Todo list title goes here</h3>
       </header>
       <main id="task-list-body">
         <p id="task-list-items"><img id="checkbox-status-svg" src="images/checkbox.svg" alt="Click here to check off this task!">Task list items go here</p>
       </main>
       <footer id="task-list-footer">
-        <img src="images/urgent.svg" class="task-list-btn" id="task-list-urgent-btn" alt="Click here to make this task urgent">
-        <p id="task-list-urgent-msg">Urgent</p>
-        <img src="images/delete.svg" class="task-list-btn" id="task-list-delete-btn" alt="Click here to delete this task">
-        <p id="task-list-delete-msg">Delete</p>
+        <div id="footer-urgent-section">
+          <img src="images/urgent.svg" class="task-list-btn" id="task-list-urgent-btn" alt="Click here to make this task urgent">
+          <p id="task-list-urgent-msg">Urgent</p>
+        </div>
+        <div id="footer-delete-section">
+          <img src="images/delete.svg" class="task-list-btn" id="task-list-delete-btn" alt="Click here to delete this task">
+          <p id="task-list-delete-msg">Delete</p>
+        </div>
       </footer>
     </article>
   </main>
