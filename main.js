@@ -1,4 +1,5 @@
 var ToDos = JSON.parse(localStorage.getItem('ToDoListArray')) || [];
+var TaskListItems = []
 var taskTitleInput = document.querySelector('.form__inputTitle');
 var taskListInput = document.querySelector('.div__inputAddTask');
 var makeTaskBtn = document.querySelector('.form__btnsAddTask');
@@ -33,7 +34,7 @@ function enableMCABtns() {
 }
 
 function disableMCABtns() {
-  if (taskTitleInput.value === '' && taskListInput.value === '') {
+  if (taskTitleInput.value === '' || taskListInput.value === '') {
   makeTaskBtn.disabled = true;
   clearBtn.disabled = true;
   addBtn.disabled = true;
@@ -47,16 +48,29 @@ function clearBtn() {
 //delete all cards from DOM and localStorage
 }
 
-function createTaskItem(event) {
+function appendTaskItem(object) {
   event.preventDefault();
-  var taskId = Date.now();
+  var taskId = object.id;
+  var taskTitle = object.title;
   var taskItem = `
     <li class="form__li">
-      <img src="images/delete.svg" class="form__liImg" id="${taskId}">${taskListInput.value}
+      <img src="images/delete.svg" class="form__liImg" id="${taskId}">${taskTitle}
     </li>`
   taskListUl.innerHTML += taskItem;
   taskListInput.value = '';
   addBtn.disabled = true;
+}
+
+function createTaskItem() {
+  event.preventDefault();
+  var newTodoItem = new ToDoItem ({
+    id: Date.now(),
+    title: taskListInput.value,
+    completed: false
+  })
+  appendTaskItem(newTodoItem);
+  TaskListItems.push(newTodoItem);
+  return newTodoItem;
 }
 
 function clearInputs() {
@@ -88,6 +102,7 @@ function handleMakeTaskList() {
     urgent: false,
     tasks: []
   });
+  var newTaskItem = createTaskItem();
   createToDoList(newTodo);
   ToDos.push(newTodo);
   newTodo.saveToStorage(ToDos);
