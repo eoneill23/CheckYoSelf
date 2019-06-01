@@ -48,26 +48,29 @@ body {
 
 .header__input {
   width: 100%;
-  padding-top: .3em;
+  padding-left: .25em;
   border:1px solid white;
   border-radius: 0 3px 3px 0;
 }
 
 ::placeholder {
-  font-size: 1.5em;
-  padding-left: .5em; 
+  font-size: 1em;
 }
 
 .header__btn {
   height: 100%;
   width: 60px;
-  padding: .5em;
+  padding: .25em .5em 0 .5em;
   background-color: #C8D3D9;
   border-radius: 3px 0 0 3px;
 }
 
 .button:disabled {
   background-color: lightgrey;
+}
+
+.input {
+  font-size: 1.5em;
 }
 
 /*-------------------Nav----------------*/
