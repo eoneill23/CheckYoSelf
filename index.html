@@ -11,7 +11,7 @@
   <header class="page__header header">
     <h1 class="header__h1">Check <span class="header__span">YO'</span> Self</h1>
     <div class="header__div">
-      <button class="header__btn">
+      <button class="button header__btn" disabled="true">
         <img src="images/search.svg" class="header__img">
       </button>
       <input type="text" class="header__input" placeholder="Search">
@@ -26,17 +26,17 @@
       </ul>
       <label class="form__labels form__labelTaskItem" for="task-input">Task Item</label>
       <div class="div form__div form__divAddTask">
-        <input type="text" class="div__inputs div__inputAddTask div__inputAddTask">
-        <button class="div__btn">
+        <input type="text" class="div__inputs div__inputAddTask">
+        <button class="button div__btn div__btnAddTask" disabled="true">
           <img src="images/plus-sign.svg" class="div__img div__imgAddTask" alt="Click here to create a new task item!">
         </button>
       </div>
-      <button class="form__btns form__btnsAddTask">Make Task List</button>
-      <button class="form__btns form__btnsClear form__btnClear">Clear All</button>
+      <button class="button form__btns form__btnsAddTask" disabled="true">Make Task List</button>
+      <button class="button form__btns form__btnsClear" disabled="true">Clear All</button>
     </form>
     <hr>
     <div class="div form__div form__divFilter">
-      <button class="form__btns form__btnsFilter">Filter by Urgency</button>
+      <button class="button form__btns form__btnsFilter" disabled="true">Filter by Urgency</button>
     </div>
   </nav>
   <main class="main">
@@ -57,13 +57,13 @@
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <button class="card__footerBtn">
+          <button class="card__footerBtn" disabled="true">
             <img src="images/urgent.svg" class=" card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
           </button>
           <p class="card__footerMsg">Urgent</p>
         </div>
         <div class="card__footerDiv">
-          <button class="card__footerBtn">
+          <button class="button card__footerBtn">
             <img src="images/delete.svg" class=" card__footerImg card__footerDlt" alt="Click here to delete this task">
           </button>
           <p class="card__footerMsg">Delete</p>
@@ -86,13 +86,13 @@
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <button class="card__footerBtn">
+          <button class="card__footerBtn" disabled="true">
             <img src="images/urgent.svg" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
           </button>
             <p class="card__footerMsg card__footerMsgUrgent">Urgent</p>
         </div>
         <div class="card__footerDiv">
-          <button class="card__footerBtn">
+          <button class="button card__footerBtn">
             <img class="card__footerImg card__footerDlt" src="images/delete.svg" alt="Click here to delete this task">
           </button>
           <p class="card__footerMsg">Delete</p>
@@ -100,5 +100,7 @@
       </footer>
     </article>
   </main>
+  <script type="text/javascript" src="todo-list.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
