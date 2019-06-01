@@ -6,10 +6,10 @@
 /*------------------Body------------------*/
 
 body {
-  height: 100vh;
-  width: 100%;
-  margin: 0;
   display: grid;
+  height: 100vh;
+  margin: 0;
+  width: 100%;
   grid-template-columns: 30% 35% 35%;
   grid-template-rows: 10%; 
   grid-template-areas: 
@@ -21,18 +21,18 @@ body {
 /*-------------------Header----------------*/
 
 .page__header {
-  grid-area: header;
-  grid-template-rows: 10%;
+  align-items: center; 
   background-color: #1F1F3D;
   display: flex;
+  grid-area: header;
+  grid-template-rows: 10%;
   justify-content: space-between;
-  align-items: center; 
   padding: .75em;
 }
 
 .header__h1 {
-  font-size: 2.5em;
   color: white;
+  font-size: 2.5em;
   font-weight: 800;
 }
 
@@ -41,61 +41,64 @@ body {
 }
 
 .header__div {
+  display: flex;
   height: 100%;
   width: 25%;
-  display: flex;
 }
 
 .header__input {
-  width: 100%;
-  padding-top: .3em;
-  border:1px solid white;
   border-radius: 0 3px 3px 0;
+  border:1px solid white;
+  padding-left: .25em;
+  width: 100%;
 }
 
 ::placeholder {
-  font-size: 1.5em;
-  padding-left: .5em; 
+  font-size: 1em;
 }
 
 .header__btn {
-  height: 100%;
-  width: 60px;
-  padding: .5em;
   background-color: #C8D3D9;
   border-radius: 3px 0 0 3px;
+  height: 100%;
+  padding: .25em .5em 0 .5em;
+  width: 60px;
 }
 
 .button:disabled {
   background-color: lightgrey;
 }
 
+.input {
+  font-size: 1.5em;
+}
+
 /*-------------------Nav----------------*/
 
 .nav {
   grid-area: nav;
-  background-color: #587A8A
+  background-color: #587A8A;
 }
 
 .form__btns {
-  height: 50px;
-  color: white;
   background-color: #1F1F3D;
   border-color: #1F1F3D;
   border-radius: 3px;
+  color: white;
   font-size: 1.5em;
+  height: 50px;
 }
 
 .form__inputs {
-  height: 50px;
   border-radius: 3px;
   border: 2px solid #1F1F3D;
+  height: 50px;
 }
 
 .nav__form {
-  padding: 1em;
   display: flex;
   flex-direction: column;
+  padding: 1em;
 }
 
 form >* {
@@ -112,38 +115,38 @@ form >* {
 }
 
 .form__ul {
-  margin: 0;
   list-style-type: none;
+  margin: 0;
   padding-left: 1em;
 }
 
 .form__li {
-  display: flex;
   color: white;
+  display: flex;
   margin: .75em 0 .75em 0;
 }
 
 .form__liImg {
   height: 20px;
-  width: 20px;
   margin-right: .75em;
+  width: 20px;
 }
 
 .div__btn {
-  height: 50px;
-  width: 50px;
-  border: 1px solid #1F1F3D;
-  padding: .5em;
   background-color: #1F1F3D;
-  border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  border: 1px solid #1F1F3D;
+  height: 50px;
+  padding: .5em;
+  width: 50px;
 }
 
 .div__inputAddTask {
-  width: 100%;
-  border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
   border: 2px solid #1F1F3D;
+  width: 100%;
 }
 
 .form__btnsClear {
@@ -165,21 +168,44 @@ hr {
 /*-------------------Main----------------*/
 
 .main {
-  grid-area: main;
-  padding: 2em;
-  height: auto;
-  columns: 2 250px;
   column-gap: 30px;
+  columns: 2 250px;
+  background-color: #F3F6F7;
+  grid-area: main;
+  height: auto;
+  padding: 2em;
 }
 
 .main__article {
-  width: 100%;
-  border: 2px solid #C7D3D8;
-  padding: 10px 0 0 0;
-  min-height: 200px;
   background-color: #FAFDFF;
-  margin-bottom: 30px;
+  border: 2px solid #C7D3D8;
   break-inside: avoid;
+  margin-bottom: 30px;
+  min-height: 100px;
+  padding: .25em;
+  width: 100%;
+}
+
+.main__userPrompt {
+  background-color: #FAFDFF;
+  border: 2px dashed lightgrey;
+  break-inside: avoid;
+  height: 300px; 
+  min-height: 100px;
+  padding: .25em;
+  padding: 1em;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.userPrompt__para {
+  color: lightgrey;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 0;
 }
 
 .main__para {
@@ -187,37 +213,47 @@ hr {
 }
 
 .card__header {
-  padding: .5em;
   border-bottom: 1px solid #C7D3D6;
+  padding: .5em;
 }
 
 .card__headerTitle {
-  margin:0;
-  font-weight: 800;
-  font-size: 1.25em;
   color: #1F1D3D
-}
-
-.card__mainImg {
-  height: 15px;
-  width: 15px;
-  margin-right: .5em;
+  font-size: 1.25em;
+  font-weight: 800;
+  margin:0;
 }
 
 .card__main {
   padding: .5em;
 }
 
-.card__mainDiv {
+.card__mainUl {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.card__mainLi {
   display: flex;
-  align-items: center;
+  padding: .5em 0 .5em 0;
+}
+
+.card__mainImg {
+  height: 20px;
+  margin-right: .5em;
+  width: 15px;
+}
+
+.card__mainPara {
+  margin: 0;
 }
 
 .card__footer {
   border-top: 1px solid #C7D3D6;
-  padding: .5em;
   display: flex;
   justify-content: space-between;
+  padding: .5em;
 }
 
 .card__footerMsg {
@@ -225,11 +261,11 @@ hr {
 }
 
 .card__footerBtn {
+  border: none;
   height: 30px;
-  width: 30px;
   margin-left: .5em;
   padding: .25em;
-  border: none;
+  width: 30px;
 }
 
 .card__footerImg {

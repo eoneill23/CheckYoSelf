@@ -7,6 +7,7 @@ var clearBtn = document.querySelector('.form__btnsClear');
 var addBtn = document.querySelector('.div__btnAddTask');
 var taskListItems = document.querySelector('.form__ul');
 var taskListUl = document.querySelector('.form__ul')
+var userPrompt = document.querySelector('.main__userPrompt')
 var mainContent = document.querySelector('.main')
 var nav = document.querySelector('.nav')
 
@@ -63,11 +64,11 @@ function appendTaskItem(object) {
 
 function createTaskItem() {
   event.preventDefault();
-  var newTodoItem = new ToDoItem ({
+  var newTodoItem = {
     id: Date.now(),
     title: taskListInput.value,
     completed: false
-  })
+  }
   appendTaskItem(newTodoItem);
   TaskListItems.push(newTodoItem);
   return newTodoItem;
@@ -76,6 +77,7 @@ function createTaskItem() {
 function clearInputs() {
   taskTitleInput.value = '';
   taskListInput.value = '';
+  taskListUl.innerHTML = '';
 }
 
 function createToDoList(obj) {
@@ -89,7 +91,6 @@ function createToDoList(obj) {
     urgent: urgentStatus,
     tasks: newTasks
   })
-
   appendToDo(newTodo);
   return newTodo;
 }
@@ -100,30 +101,26 @@ function handleMakeTaskList() {
     id: Date.now(),
     title: taskTitleInput.value,
     urgent: false,
-    tasks: []
+    tasks: TaskListItems
   });
-  var newTaskItem = createTaskItem();
   createToDoList(newTodo);
   ToDos.push(newTodo);
   newTodo.saveToStorage(ToDos);
+  TaskListItems = [];
   clearInputs();
   disableMCABtns();
 }
 
 function appendToDo(todo) {
+  userPrompt.classList.add('hidden');
   mainContent.insertAdjacentHTML('afterbegin', `<article class="main__article card" data-id="${todo.id}">
       <header class="card__header">
         <h3 class="card__headerTitle">${todo.title}</h3>
       </header>
       <main class="card__main">
-        <div class="card__mainDiv">
-          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
-          <p class="card__mainPara">Task list items go here.</p>
-        </div>
-        <div class="card__mainDiv">
-          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
-          <p class="card__mainPara">Task list items go here.</p>
-        </div>
+        <ul class="card__mainUl">
+        ${appendTaskItemsToCard(todo)}
+        </ul>
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
@@ -140,6 +137,23 @@ function appendToDo(todo) {
         </div>
       </footer>
     </article>`)
+}
+
+function promptReappear() {
+  if (ToDos.length === 0) {
+    userPrompt.classList.remove('hidden');
+  }
+}
+
+function appendTaskItemsToCard(todo) {
+  var taskArea = '';
+  for(var i=0; i < todo.tasks.length; i++) {
+    taskArea += 
+      `<li class="card__mainLi">
+        <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+        <p class="card__mainPara">${todo.tasks[i].title}</p>
+      </li>`
+  } return taskArea;
 }
 
 function clickHandler(event) {
@@ -163,6 +177,7 @@ function deleteToDo(event) {
     event.target.closest('.card').remove()
     ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
   }
+  promptReappear();
 }
 
 function deleteLiFromNav(event) {
