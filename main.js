@@ -1,4 +1,4 @@
-var taskItems = [];
+var ToDos = JSON.parse(localStorage.getItem('ToDoListArray')) || [];
 var taskTitleInput = document.querySelector('.form__inputTitle');
 var taskListInput = document.querySelector('.div__inputAddTask');
 var makeTaskBtn = document.querySelector('.form__btnsAddTask');
@@ -6,10 +6,21 @@ var clearBtn = document.querySelector('.form__btnsClear');
 var addBtn = document.querySelector('.div__btnAddTask');
 var taskListItems = document.querySelector('.form__ul');
 var taskListUl = document.querySelector('.form__ul')
+var mainContent = document.querySelector('.main')
 
 taskTitleInput.addEventListener('keyup', enableMCABtns);
 taskListInput.addEventListener('keyup', enableMCABtns);
 addBtn.addEventListener('click', createTaskItem)
+makeTaskBtn.addEventListener('click', handleMakeTaskList)
+mainContent.addEventListener('click' clickHandler)
+window.addEventListener('load', mapLocalStorage(ToDos))
+
+function mapLocalStorage(oldToDos) {
+  var createNewToDos = oldToDos.map(function(object){
+    return createToDoList(object);
+  })
+  ToDos = createNewToDos;
+}
 
 function enableMCABtns() {
   makeTaskBtn.disabled = false;
@@ -34,4 +45,79 @@ function createTaskItem(event) {
     <img src="images/delete.svg" class="form__liImg" id="${taskId}">${taskListInput.value}
     </li>`
   taskListUl.innerHTML += taskItem;
+  taskListInput.value = '';
+  addBtn.disabled = true;
+}
+
+function clearInputs() {
+  taskTitleInput.value = '';
+  taskListInput.value = '';
+}
+
+function createToDoList(obj) {
+  var uniqueId = obj.id;
+  var newTitle = obj.title;
+  var urgentStatus = obj.urgent;
+  var newTasks = obj.tasks;
+  var newTodo = new ToDoList({
+    id: uniqueId,
+    title: newTitle,
+    urgent: urgentStatus,
+    tasks: newTasks
+  })
+
+  appendToDo(newTodo);
+  return newTodo;
+}
+
+function handleMakeTaskList() {
+  event.preventDefault();
+  var newTodo = new ToDoList ({
+    id: Date.now(),
+    title: taskTitleInput.value,
+    urgent: false,
+    tasks: []
+  });
+  createToDoList(newTodo);
+  ToDos.push(newTodo);
+  newTodo.saveToStorage(ToDos);
+  appendToDo(newTodo)
+  clearInputs();
+  disableMCABtns();
+}
+
+function appendToDo(todo) {
+  mainContent.insertAdjacentHTML('afterbegin', `<article class="main__article card" data-id="${todo.id}">
+      <header class="card__header">
+        <h3 class="card__headerTitle">${todo.title}</h3>
+      </header>
+      <main class="card__main">
+        <div class="card__mainDiv">
+          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+          <p class="card__mainPara">Task list items go here.</p>
+        </div>
+        <div class="card__mainDiv">
+          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+          <p class="card__mainPara">Task list items go here.</p>
+        </div>
+      </main>
+      <footer class="card__footer">
+        <div class="card__footerDiv">
+          <button class="card__footerBtn" disabled="true">
+            <img src="images/urgent.svg" class=" card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
+          </button>
+          <p class="card__footerMsg">Urgent</p>
+        </div>
+        <div class="card__footerDiv">
+          <button class="button card__footerBtn">
+            <img src="images/delete.svg" class=" card__footerImg card__footerDlt" alt="Click here to delete this task">
+          </button>
+          <p class="card__footerMsg">Delete</p>
+        </div>
+      </footer>
+    </article>`)
+}
+
+clickHandler() {
+  deleteTodo();
 }
