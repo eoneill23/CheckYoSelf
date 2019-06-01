@@ -7,6 +7,7 @@ var clearBtn = document.querySelector('.form__btnsClear');
 var addBtn = document.querySelector('.div__btnAddTask');
 var taskListItems = document.querySelector('.form__ul');
 var taskListUl = document.querySelector('.form__ul')
+var userPrompt = document.querySelector('.main__userPrompt')
 var mainContent = document.querySelector('.main')
 var nav = document.querySelector('.nav')
 
@@ -110,6 +111,7 @@ function handleMakeTaskList() {
 }
 
 function appendToDo(todo) {
+  userPrompt.classList.add('hidden');
   mainContent.insertAdjacentHTML('afterbegin', `<article class="main__article card" data-id="${todo.id}">
       <header class="card__header">
         <h3 class="card__headerTitle">${todo.title}</h3>
