@@ -170,6 +170,7 @@ hr {
 .main {
   column-gap: 30px;
   columns: 2 250px;
+  background-color: #F3F6F7;
   grid-area: main;
   height: auto;
   padding: 2em;

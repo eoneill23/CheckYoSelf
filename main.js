@@ -77,6 +77,7 @@ function createTaskItem() {
 function clearInputs() {
   taskTitleInput.value = '';
   taskListInput.value = '';
+  taskListUl.innerHTML = '';
 }
 
 function createToDoList(obj) {
@@ -105,6 +106,7 @@ function handleMakeTaskList() {
   createToDoList(newTodo);
   ToDos.push(newTodo);
   newTodo.saveToStorage(ToDos);
+  TaskListItems = [];
   clearInputs();
   disableMCABtns();
 }
@@ -135,6 +137,12 @@ function appendToDo(todo) {
         </div>
       </footer>
     </article>`)
+}
+
+function promptReappear() {
+  if (ToDos.length === 0) {
+    userPrompt.classList.remove('hidden');
+  }
 }
 
 function appendTaskItemsToCard(todo) {
@@ -169,7 +177,7 @@ function deleteToDo(event) {
     event.target.closest('.card').remove()
     ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
   }
-  userPrompt.classList.remove('hidden');
+  promptReappear();
 }
 
 function deleteLiFromNav(event) {
