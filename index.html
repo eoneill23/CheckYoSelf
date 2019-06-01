@@ -40,6 +40,33 @@
   </nav>
   <main class="main">
     <p class="main__para"></p>
+    <article class="main__article card" data-id="${todo.id}">
+      <header class="card__header">
+        <h3 class="card__headerTitle">${todo.title}</h3>
+      </header>
+      <main class="card__main">
+        <ul class="card__mainUl">
+          <li class="card__mainLi">
+            <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+            <p class="card__mainPara">Task list items go here.</p>
+          </li>
+        </ul>
+      </main>
+      <footer class="card__footer">
+        <div class="card__footerDiv">
+          <button class="card__footerBtn" disabled="true">
+            <img src="images/urgent.svg" class=" card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
+          </button>
+          <p class="card__footerMsg">Urgent</p>
+        </div>
+        <div class="card__footerDiv">
+          <button class="button card__footerBtn card__footerDlt">
+            <img src="images/delete.svg" class=" card__footerImg card__footerDlt" alt="Click here to delete this task">
+          </button>
+          <p class="card__footerMsg">Delete</p>
+        </div>
+      </footer>
+    </article>
   </main>
   <script type="text/javascript" src="todo-list.js"></script>
   <script type="text/javascript" src="main.js"></script>

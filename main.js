@@ -63,11 +63,11 @@ function appendTaskItem(object) {
 
 function createTaskItem() {
   event.preventDefault();
-  var newTodoItem = new ToDoItem ({
+  var newTodoItem = {
     id: Date.now(),
     title: taskListInput.value,
     completed: false
-  })
+  }
   appendTaskItem(newTodoItem);
   TaskListItems.push(newTodoItem);
   return newTodoItem;
@@ -100,9 +100,8 @@ function handleMakeTaskList() {
     id: Date.now(),
     title: taskTitleInput.value,
     urgent: false,
-    tasks: []
+    tasks: TaskListItems
   });
-  var newTaskItem = createTaskItem();
   createToDoList(newTodo);
   ToDos.push(newTodo);
   newTodo.saveToStorage(ToDos);
@@ -140,6 +139,10 @@ function appendToDo(todo) {
         </div>
       </footer>
     </article>`)
+}
+
+function appendTaskItemsToCard() {
+
 }
 
 function clickHandler(event) {

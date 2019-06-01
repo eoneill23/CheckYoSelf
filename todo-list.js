@@ -25,10 +25,10 @@ class ToDoList {
   }
 }
 
-class ToDoItem {
-  constructor(obj) {
-    this.id = obj.id;
-    this.title = obj.title;
-    this.completed = obj.completed || false;
-  }
-}
+// class ToDoItem {
+//   constructor(obj) {
+//     this.id = obj.id;
+//     this.title = obj.title;
+//     this.completed = obj.completed || false;
+//   }
+// }

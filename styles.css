@@ -176,7 +176,7 @@ hr {
   width: 100%;
   border: 2px solid #C7D3D8;
   padding: 10px 0 0 0;
-  min-height: 200px;
+  min-height: 100px;
   background-color: #FAFDFF;
   margin-bottom: 30px;
   break-inside: avoid;
@@ -198,19 +198,28 @@ hr {
   color: #1F1D3D
 }
 
-.card__mainImg {
-  height: 15px;
-  width: 15px;
-  margin-right: .5em;
-}
-
 .card__main {
   padding: .5em;
 }
 
-.card__mainDiv {
+.card__mainUl {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.card__mainLi {
   display: flex;
-  align-items: center;
+}
+
+.card__mainImg {
+  height: 20px;
+  width: 15px;
+  margin-right: .5em;
+}
+
+.card__mainPara {
+  margin: 0;
 }
 
 .card__footer {
