@@ -7,12 +7,14 @@ var addBtn = document.querySelector('.div__btnAddTask');
 var taskListItems = document.querySelector('.form__ul');
 var taskListUl = document.querySelector('.form__ul')
 var mainContent = document.querySelector('.main')
+var nav = document.querySelector('.nav')
 
 taskTitleInput.addEventListener('keyup', enableMCABtns);
 taskListInput.addEventListener('keyup', enableMCABtns);
 addBtn.addEventListener('click', createTaskItem);
 makeTaskBtn.addEventListener('click', handleMakeTaskList);
 clearBtn.addEventListener('click', clearBtn);
+nav.addEventListener('click', deleteLiFromNav)
 mainContent.addEventListener('click', clickHandler);
 window.addEventListener('load', mapLocalStorage(ToDos));
 
@@ -145,6 +147,12 @@ function deleteToDo(event) {
     var todoIndex = getToDoIndex(todoId)
     event.target.closest('.card').remove()
     ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
+  }
+}
+
+function deleteLiFromNav(event) {
+  if (event.target.closest('.form__liImg')) {
+    event.target.closest('.form__li').remove();
   }
 }
 
