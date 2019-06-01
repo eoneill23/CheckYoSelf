@@ -10,10 +10,11 @@ var mainContent = document.querySelector('.main')
 
 taskTitleInput.addEventListener('keyup', enableMCABtns);
 taskListInput.addEventListener('keyup', enableMCABtns);
-addBtn.addEventListener('click', createTaskItem)
-makeTaskBtn.addEventListener('click', handleMakeTaskList)
-mainContent.addEventListener('click', clickHandler)
-window.addEventListener('load', mapLocalStorage(ToDos))
+addBtn.addEventListener('click', createTaskItem);
+makeTaskBtn.addEventListener('click', handleMakeTaskList);
+clearBtn.addEventListener('click', clearBtn);
+mainContent.addEventListener('click', clickHandler);
+window.addEventListener('load', mapLocalStorage(ToDos));
 
 function mapLocalStorage(oldToDos) {
   var createNewToDos = oldToDos.map(function(object){
@@ -37,12 +38,19 @@ function disableMCABtns() {
   }
 }
 
+function clearBtn() {
+  event.preventDefault();
+  taskTitleInput.value = '';
+  taskListInput.value = '';
+//delete all cards from DOM and localStorage
+}
+
 function createTaskItem(event) {
   event.preventDefault();
   var taskId = Date.now();
   var taskItem = `
-    <li>
-    <img src="images/delete.svg" class="form__liImg" id="${taskId}">${taskListInput.value}
+    <li class="form__li">
+      <img src="images/delete.svg" class="form__liImg" id="${taskId}">${taskListInput.value}
     </li>`
   taskListUl.innerHTML += taskItem;
   taskListInput.value = '';
@@ -81,7 +89,6 @@ function handleMakeTaskList() {
   createToDoList(newTodo);
   ToDos.push(newTodo);
   newTodo.saveToStorage(ToDos);
-  appendToDo(newTodo)
   clearInputs();
   disableMCABtns();
 }
@@ -140,3 +147,39 @@ function deleteToDo(event) {
     ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
   }
 }
+
+
+
+
+
+
+//URGENT CARD STYLES
+  // <article class="urgent__card main__article card" data-id="">
+  //     <header class="card__header">
+  //       <h3 class="card__headerTitle">Todo list title goes here</h3>
+  //     </header>
+  //     <main class="card__main">
+  //       <div class="card__mainDiv">
+  //         <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+  //         <p class="card__mainPara">Task list items go here.</p>
+  //       </div>
+  //       <div class="card__mainDiv">
+  //         <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+  //         <p class="card__mainPara">Task list items go here.</p>
+  //       </div>
+  //     </main>
+  //     <footer class="card__footer">
+  //       <div class="card__footerDiv">
+  //         <button class="card__footerBtn" disabled="true">
+  //           <img src="images/urgent.svg" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
+  //         </button>
+  //           <p class="card__footerMsg card__footerMsgUrgent">Urgent</p>
+  //       </div>
+  //       <div class="card__footerDiv">
+  //         <button class="button card__footerBtn">
+  //           <img class="card__footerImg card__footerDlt" src="images/delete.svg" alt="Click here to delete this task">
+  //         </button>
+  //         <p class="card__footerMsg">Delete</p>
+  //       </div>
+  //     </footer>
+  //   </article>

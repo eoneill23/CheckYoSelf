@@ -115,9 +115,16 @@ form >* {
   padding-left: 1em;
 }
 
+.form__li {
+  display: flex;
+  color: white;
+  margin: .75em 0 .75em 0;
+}
+
 .form__liImg {
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
+  margin-right: .75em;
 }
 
 .div__btn {
