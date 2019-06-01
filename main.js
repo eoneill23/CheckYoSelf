@@ -90,7 +90,6 @@ function createToDoList(obj) {
     urgent: urgentStatus,
     tasks: newTasks
   })
-
   appendToDo(newTodo);
   return newTodo;
 }
@@ -170,6 +169,7 @@ function deleteToDo(event) {
     event.target.closest('.card').remove()
     ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
   }
+  userPrompt.classList.remove('hidden');
 }
 
 function deleteLiFromNav(event) {
