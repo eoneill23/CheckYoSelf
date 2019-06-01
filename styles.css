@@ -175,7 +175,7 @@ hr {
 .main__article {
   width: 100%;
   border: 2px solid #C7D3D8;
-  padding: 10px 0 0 0;
+  padding: .25em;
   min-height: 100px;
   background-color: #FAFDFF;
   margin-bottom: 30px;
@@ -210,6 +210,7 @@ hr {
 
 .card__mainLi {
   display: flex;
+  padding: .5em 0 .5em 0;
 }
 
 .card__mainImg {

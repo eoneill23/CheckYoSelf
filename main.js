@@ -115,14 +115,9 @@ function appendToDo(todo) {
         <h3 class="card__headerTitle">${todo.title}</h3>
       </header>
       <main class="card__main">
-        <div class="card__mainDiv">
-          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
-          <p class="card__mainPara">Task list items go here.</p>
-        </div>
-        <div class="card__mainDiv">
-          <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
-          <p class="card__mainPara">Task list items go here.</p>
-        </div>
+        <ul class="card__mainUl">
+        ${appendTaskItemsToCard(todo)}
+        </ul>
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
@@ -141,8 +136,15 @@ function appendToDo(todo) {
     </article>`)
 }
 
-function appendTaskItemsToCard() {
-
+function appendTaskItemsToCard(todo) {
+  var taskArea = '';
+  for(var i=0; i < todo.tasks.length; i++) {
+    taskArea += 
+      `<li class="card__mainLi">
+        <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+        <p class="card__mainPara">${todo.tasks[i].title}</p>
+      </li>`
+  } return taskArea;
 }
 
 function clickHandler(event) {
