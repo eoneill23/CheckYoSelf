@@ -12,7 +12,7 @@ taskTitleInput.addEventListener('keyup', enableMCABtns);
 taskListInput.addEventListener('keyup', enableMCABtns);
 addBtn.addEventListener('click', createTaskItem)
 makeTaskBtn.addEventListener('click', handleMakeTaskList)
-mainContent.addEventListener('click' clickHandler)
+mainContent.addEventListener('click', clickHandler)
 window.addEventListener('load', mapLocalStorage(ToDos))
 
 function mapLocalStorage(oldToDos) {
@@ -109,7 +109,7 @@ function appendToDo(todo) {
           <p class="card__footerMsg">Urgent</p>
         </div>
         <div class="card__footerDiv">
-          <button class="button card__footerBtn">
+          <button class="button card__footerBtn card__footerDlt">
             <img src="images/delete.svg" class=" card__footerImg card__footerDlt" alt="Click here to delete this task">
           </button>
           <p class="card__footerMsg">Delete</p>
@@ -118,6 +118,24 @@ function appendToDo(todo) {
     </article>`)
 }
 
-clickHandler() {
-  deleteTodo();
+function clickHandler(event) {
+  deleteToDo();
+}
+
+function getToDoId(event) {
+  return event.target.closest('.card').getAttribute('data-id');
+}
+
+function getToDoIndex(id) {
+  return ToDos.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id);
+  })
+}
+
+function deleteToDo(event) {
+  if (event.target.closest('.card__footerDlt')) {
+    var todoId = getToDoId(event)
+    var todoIndex = getToDoIndex(todoId)
+    console.log(todoId, todoIndex)
+  }
 }
