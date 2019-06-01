@@ -182,6 +182,24 @@ hr {
   break-inside: avoid;
 }
 
+.main__userPrompt {
+  width: 100%;
+  border: 2px dashed lightgrey;
+  padding: .25em;
+  min-height: 100px;
+  background-color: #FAFDFF;
+  height: 300px; 
+  break-inside: avoid;
+  padding: 1em;
+}
+
+.userPrompt__para {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 0;
+  color: lightgrey;
+}
+
 .main__para {
   margin: 0;
 }
