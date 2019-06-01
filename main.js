@@ -119,7 +119,7 @@ function appendToDo(todo) {
 }
 
 function clickHandler(event) {
-  deleteToDo();
+  deleteToDo(event);
 }
 
 function getToDoId(event) {
@@ -136,6 +136,7 @@ function deleteToDo(event) {
   if (event.target.closest('.card__footerDlt')) {
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
-    console.log(todoId, todoIndex)
+    event.target.closest('.card').remove()
+    ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
   }
 }
