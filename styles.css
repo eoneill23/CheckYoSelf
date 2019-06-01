@@ -56,10 +56,10 @@ body {
   padding-left: .25em;
 }
 
-.header__img {
+.header__btn {
   height: 100%;
   width: 60px;
-  padding: .75em;
+  padding: .5em;
   background-color: #C8D3D9;
   border-radius: 3px 0 0 3px;
 }
@@ -116,9 +116,10 @@ form >* {
   width: 15px;
 }
 
-.div__img {
+.div__btn {
   height: 50px;
   width: 50px;
+  border: 1px solid #1F1F3D;
   padding: .5em;
   background-color: #1F1F3D;
   border-top-right-radius: 3px;
@@ -211,9 +212,16 @@ hr {
 }
 
 .card__footerBtn {
+  height: 30px;
+  width: 30px;
+  margin-left: .5em;
+  padding: .25em;
+  border: none;
+}
+
+.card__footerImg {
   height: 20px;
   width: 20px;
-  margin-left: 30%;
 }
 
 /*-------------Urgent Card----------------*/
@@ -224,15 +232,19 @@ hr {
 }
 
 .urgent__card header {
-  border-bottom: 2px solid #FFC30C;
+  border-bottom: 1px solid #FFC30C;
 }
 
 .urgent__card footer {
-  border-top: 2px solid #FFC30C;
+  border-top: 1px solid #FFC30C;
 }
 
 .urgent__card .card__footerMsgUrgent {
   color: #B23A25;
+}
+
+.urgent__card button {
+  background-color: #FFE89D;
 }
 
 .urgent__card img.card__footerUrgent {
