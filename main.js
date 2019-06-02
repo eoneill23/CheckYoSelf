@@ -139,7 +139,7 @@ function appendToDo(todo) {
         </div>
       </footer>
     </article>`)
-}
+}         
 
 function promptReappear() {
   if (ToDos.length === 0) {
@@ -178,11 +178,11 @@ function deleteToDo(event) {
   if (event.target.closest('.card__footerDlt')) {
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
-    event.target.closest('.card').remove()
-    ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
+    enableDeleteBtn(event, todoIndex)
   }
   promptReappear();
 }
+
 
 function deleteLiFromNav(event) {
   if (event.target.closest('.form__liImg')) {
@@ -220,9 +220,19 @@ function getTaskItemIndex(id, obj) {
 };
 
 
-
-
-
+function enableDeleteBtn(event, index) {
+  var objectToDelete = ToDos[index].tasks;
+  var newArray = objectToDelete.filter(function(arrayObj) {
+     return arrayObj.completed === true;
+  });
+  if (newArray.length === objectToDelete.length) {
+    event.target.closest('.card').remove()
+    ToDos[index].deleteFromStorage(ToDos, index)
+  }
+  else {
+    return
+  }
+}
 
 //URGENT CARD STYLES
   // <article class="urgent__card main__article card" data-id="">

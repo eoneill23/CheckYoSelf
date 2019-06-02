@@ -277,6 +277,10 @@ hr {
   width: 20px;
 }
 
+/*.card__footerDlt:hover {
+  background: url(images/delete-active.svg) no-repeat;
+}*/
+
 /*-------------Urgent Card----------------*/
 
 .urgent__card {
