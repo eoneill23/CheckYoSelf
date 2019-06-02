@@ -16,6 +16,11 @@ class ToDoList {
     this.saveToStorage(toDoArray);
   }
 
+  updateCheck(toDos, itemIndex) {
+    this.tasks[itemIndex].completed = !this.tasks[itemIndex].completed;
+    this.saveToStorage(toDos)
+  }
+
   updateToDo() {
 
   }

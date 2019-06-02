@@ -1,5 +1,5 @@
 var ToDos = JSON.parse(localStorage.getItem('ToDoListArray')) || [];
-var TaskListItems = []
+var TaskListItems = [];
 var taskTitleInput = document.querySelector('.form__inputTitle');
 var taskListInput = document.querySelector('.div__inputAddTask');
 var makeTaskBtn = document.querySelector('.form__btnsAddTask');
@@ -19,6 +19,9 @@ clearBtn.addEventListener('click', clearBtn);
 nav.addEventListener('click', deleteLiFromNav)
 mainContent.addEventListener('click', clickHandler);
 window.addEventListener('load', mapLocalStorage(ToDos));
+
+
+//NEED TO WRITE FUNCTION TO REMOVE TASK LIST ITEM FROM TASKITEMS ARRAY WHEN THEY CLICK ON X BUTTON ON THE DOM SO THEY DON'T APPEND TO CARD
 
 function mapLocalStorage(oldToDos) {
   var createNewToDos = oldToDos.map(function(object){
@@ -54,7 +57,7 @@ function appendTaskItem(object) {
   var taskTitle = object.title;
   var taskItem = `
     <li class="form__li">
-      <img src="images/delete.svg" class="form__liImg" id="${taskId}">${taskTitle}
+      <img src="images/delete.svg" class="form__liImg" data-id="${taskId}">${taskTitle}
     </li>`
   taskListUl.innerHTML += taskItem;
   taskListInput.value = '';
@@ -148,7 +151,7 @@ function appendTaskItemsToCard(todo) {
   var taskArea = '';
   for(var i=0; i < todo.tasks.length; i++) {
     taskArea += 
-      `<li class="card__mainLi">
+    `<li class="card__mainLi" data-id="${todo.tasks[i].id}">
         <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
         <p class="card__mainPara">${todo.tasks[i].title}</p>
       </li>`
@@ -190,14 +193,30 @@ function toggleCheckMark(event) {
   if (event.target.closest('.card__mainImg')) {
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
-    //write function to find id of task you are clicking on
-    //write function to find index of task you are clicking on
-    var oldCheck = document.querySelector(`.card[data-id="${todoId}"] .card__mainImg`) 
-    var checked = 'images/checkbox-active.svg'
-    oldCheck.src = checked
-    ToDos[todoIndex].updateTask(ToDos)
+    var todoObj = ToDos[todoIndex];
+    var taskItemId = getTaskItemId(event)
+    var taskItemIndex = getTaskItemIndex(taskItemId, todoObj)
+    var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
+    event.target.setAttribute('src', check)
+    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
   }
 }
+
+function findTask(obj, id) {
+    return obj.tasks.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id);
+  }) 
+};
+
+function getTaskItemId(event) {
+ return event.target.closest('.card__mainLi').getAttribute('data-id');
+}
+
+function getTaskItemIndex(id, obj) {
+    return obj.tasks.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id);
+  }) 
+};
 
 
 
