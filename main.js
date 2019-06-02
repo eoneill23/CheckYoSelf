@@ -1,5 +1,5 @@
 var ToDos = JSON.parse(localStorage.getItem('ToDoListArray')) || [];
-var TaskListItems = []
+var TaskListItems = [];
 var taskTitleInput = document.querySelector('.form__inputTitle');
 var taskListInput = document.querySelector('.div__inputAddTask');
 var makeTaskBtn = document.querySelector('.form__btnsAddTask');
@@ -151,7 +151,7 @@ function appendTaskItemsToCard(todo) {
   var taskArea = '';
   for(var i=0; i < todo.tasks.length; i++) {
     taskArea += 
-      `<li class="card__mainLi" data-id="${todo.tasks[i]id}">
+    `<li class="card__mainLi" data-id="${todo.tasks[i].id}">
         <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
         <p class="card__mainPara">${todo.tasks[i].title}</p>
       </li>`
@@ -196,29 +196,27 @@ function toggleCheckMark(event) {
     var todoObj = ToDos[todoIndex];
     var taskItemId = getTaskItemId(event)
     var taskItemIndex = getTaskItemIndex(taskItemId, todoObj)
-    // console.log(taskItemIndex, 'Hello')
-    // var oldCheck = document.querySelector(`.card[data-id="${todoId}"] .card__mainImg`) 
-    // var checked = 'images/checkbox-active.svg'
-    // oldCheck.src = checked
-    // ToDos[todoIndex].updateTask(ToDos)
+    var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
+    event.target.setAttribute('src', check)
+    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
   }
 }
 
+function findTask(obj, id) {
+    return obj.tasks.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id);
+  }) 
+};
+
 function getTaskItemId(event) {
-  console.log(event.target.closest('.card__mainLi'))
-  debugger
-  var liId = event.target.closest('.card__mainLi').getAttribute('data-id')
-  return liId;
+ return event.target.closest('.card__mainLi').getAttribute('data-id');
 }
 
 function getTaskItemIndex(id, obj) {
-    console.log('Hello ', id)
-    debugger
-    return obj.tasks.findIndex(function(item) {
-    item.id == parseInt(id);
-    return item.id
+    return obj.tasks.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id);
   }) 
-}
+};
 
 
 
