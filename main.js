@@ -139,7 +139,7 @@ function appendToDo(todo) {
         </div>
       </footer>
     </article>`)
-}
+}         
 
 function promptReappear() {
   if (ToDos.length === 0) {
@@ -150,9 +150,10 @@ function promptReappear() {
 function appendTaskItemsToCard(todo) {
   var taskArea = '';
   for(var i=0; i < todo.tasks.length; i++) {
+    var checkStatus = todo.tasks[i].completed ? 'checkbox-active.svg' : 'checkbox.svg';
     taskArea += 
     `<li class="card__mainLi" data-id="${todo.tasks[i].id}">
-        <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+        <img class="card__mainImg" src="images/${checkStatus}" alt="Click here to check off this task!">
         <p class="card__mainPara">${todo.tasks[i].title}</p>
       </li>`
   } return taskArea;
@@ -177,11 +178,11 @@ function deleteToDo(event) {
   if (event.target.closest('.card__footerDlt')) {
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
-    event.target.closest('.card').remove()
-    ToDos[todoIndex].deleteFromStorage(ToDos, todoIndex)
+    enableDeleteBtn(event, todoIndex)
   }
   promptReappear();
 }
+
 
 function deleteLiFromNav(event) {
   if (event.target.closest('.form__liImg')) {
@@ -196,9 +197,9 @@ function toggleCheckMark(event) {
     var todoObj = ToDos[todoIndex];
     var taskItemId = getTaskItemId(event)
     var taskItemIndex = getTaskItemIndex(taskItemId, todoObj)
+    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
     var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
     event.target.setAttribute('src', check)
-    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
   }
 }
 
@@ -219,9 +220,19 @@ function getTaskItemIndex(id, obj) {
 };
 
 
-
-
-
+function enableDeleteBtn(event, index) {
+  var objectToDelete = ToDos[index].tasks;
+  var newArray = objectToDelete.filter(function(arrayObj) {
+     return arrayObj.completed === true;
+  });
+  if (newArray.length === objectToDelete.length) {
+    event.target.closest('.card').remove()
+    ToDos[index].deleteFromStorage(ToDos, index)
+  }
+  else {
+    return
+  }
+}
 
 //URGENT CARD STYLES
   // <article class="urgent__card main__article card" data-id="">
