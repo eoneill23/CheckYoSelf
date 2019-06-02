@@ -54,7 +54,7 @@ function appendTaskItem(object) {
   var taskTitle = object.title;
   var taskItem = `
     <li class="form__li">
-      <img src="images/delete.svg" class="form__liImg" id="${taskId}">${taskTitle}
+      <img src="images/delete.svg" class="form__liImg" data-id="${taskId}">${taskTitle}
     </li>`
   taskListUl.innerHTML += taskItem;
   taskListInput.value = '';
@@ -148,7 +148,7 @@ function appendTaskItemsToCard(todo) {
   var taskArea = '';
   for(var i=0; i < todo.tasks.length; i++) {
     taskArea += 
-      `<li class="card__mainLi">
+      `<li class="card__mainLi" data-id="${todo.id}">
         <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
         <p class="card__mainPara">${todo.tasks[i].title}</p>
       </li>`
@@ -190,13 +190,18 @@ function toggleCheckMark(event) {
   if (event.target.closest('.card__mainImg')) {
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
-    //write function to find id of task you are clicking on
+    var taskItemId = getTaskItemId(event)
     //write function to find index of task you are clicking on
     var oldCheck = document.querySelector(`.card[data-id="${todoId}"] .card__mainImg`) 
     var checked = 'images/checkbox-active.svg'
     oldCheck.src = checked
     ToDos[todoIndex].updateTask(ToDos)
   }
+}
+
+function getTaskItemId(event) {
+  var liId = event.target.closest('.card__mainLi').getAttribute('data-id')
+  return liId;
 }
 
 
