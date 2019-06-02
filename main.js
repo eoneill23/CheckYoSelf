@@ -150,9 +150,10 @@ function promptReappear() {
 function appendTaskItemsToCard(todo) {
   var taskArea = '';
   for(var i=0; i < todo.tasks.length; i++) {
+    var checkStatus = todo.tasks[i].completed ? 'checkbox-active.svg' : 'checkbox.svg';
     taskArea += 
     `<li class="card__mainLi" data-id="${todo.tasks[i].id}">
-        <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
+        <img class="card__mainImg" src="images/${checkStatus}" alt="Click here to check off this task!">
         <p class="card__mainPara">${todo.tasks[i].title}</p>
       </li>`
   } return taskArea;
@@ -196,9 +197,9 @@ function toggleCheckMark(event) {
     var todoObj = ToDos[todoIndex];
     var taskItemId = getTaskItemId(event)
     var taskItemIndex = getTaskItemIndex(taskItemId, todoObj)
+    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
     var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
     event.target.setAttribute('src', check)
-    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
   }
 }
 

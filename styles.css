@@ -239,6 +239,10 @@ hr {
   padding: .5em 0 .5em 0;
 }
 
+.italicized {
+  font-style: italic;
+}
+
 .card__mainImg {
   height: 20px;
   margin-right: .5em;
