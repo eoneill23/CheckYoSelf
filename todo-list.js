@@ -11,9 +11,9 @@ class ToDoList {
    localStorage.setItem('ToDoListArray', saveToDos );
   }
 
-  deleteFromStorage(ToDoArray, ToDoIndex) {
-    ToDoArray.splice(ToDoIndex, 1)
-    this.saveToStorage(ToDoArray);
+  deleteFromStorage(toDoArray, toDoIndex) {
+    toDoArray.splice(toDoIndex, 1)
+    this.saveToStorage(toDoArray);
   }
 
   updateToDo() {

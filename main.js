@@ -46,7 +46,6 @@ function clearBtn() {
   event.preventDefault();
   taskTitleInput.value = '';
   taskListInput.value = '';
-//delete all cards from DOM and localStorage
 }
 
 function appendTaskItem(object) {
@@ -158,6 +157,7 @@ function appendTaskItemsToCard(todo) {
 
 function clickHandler(event) {
   deleteToDo(event);
+  toggleCheckMark(event);
 }
 
 function getToDoId(event) {
@@ -183,6 +183,19 @@ function deleteToDo(event) {
 function deleteLiFromNav(event) {
   if (event.target.closest('.form__liImg')) {
     event.target.closest('.form__li').remove();
+  }
+}
+
+function toggleCheckMark(event) {
+  if (event.target.closest('.card__mainImg')) {
+    var todoId = getToDoId(event)
+    var todoIndex = getToDoIndex(todoId)
+    //write function to find id of task you are clicking on
+    //write function to find index of task you are clicking on
+    var oldCheck = document.querySelector(`.card[data-id="${todoId}"] .card__mainImg`) 
+    var checked = 'images/checkbox-active.svg'
+    oldCheck.src = checked
+    ToDos[todoIndex].updateTask(ToDos)
   }
 }
 
