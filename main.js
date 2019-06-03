@@ -204,7 +204,7 @@ function findNavLiIndex(id) {
 
 function toggleCheckMark(event) {
   if (event.target.closest('.card__mainImg')) {
-    console.log('hello ', event.target)
+    console.log(event)
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
     var todoObj = ToDos[todoIndex];
@@ -214,8 +214,20 @@ function toggleCheckMark(event) {
     ToDos[todoIndex].updateTask(ToDos, taskItemIndex)
     var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
     event.target.setAttribute('src', check);
+    updateStyle(event, todoIndex, taskItemIndex)
   }
 }
+
+function updateStyle(event, cardIndex, itemIndex) {
+  var paragraph = event.target.nextElementSibling;
+  if(ToDos[cardIndex].tasks[itemIndex].completed === true) {
+    paragraph.style.color = '#3C6577';
+    paragraph.style.fontStyle = 'italic'
+  } else {
+    paragraph.style.color = '#1F1F3D';
+    paragraph.style.fontStyle = 'normal';
+  }
+} 
 
 function findTask(obj, id) {
     return obj.tasks.findIndex(function(arrayObj) {
