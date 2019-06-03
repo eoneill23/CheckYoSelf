@@ -252,7 +252,7 @@ function enableDeleteBtn(event, index) {
   else {
     return
   }
-}
+};
 
 function toggleUrgent(event) {
   if(event.target.closest('.card__footerUrgent')) {
@@ -260,8 +260,16 @@ function toggleUrgent(event) {
   var todoIndex = getToDoIndex(todoId)
   ToDos[todoIndex].updateToDo(ToDos, todoIndex)
   var urgent = ToDos[todoIndex].urgent ? 'images/urgent-active.svg' : 'images/urgent.svg';
-  event.target.setAttribute('src', urgent)
+  event.target.setAttribute('src', urgent);
+  updateUrgency(event, todoIndex)
   }
+};
+
+function updateUrgency(event, cardIndex) {
+  var updateCard = event.target.closest('.card');
+  console.log(updateCard)
+  updateCard.classList.toggle('urgent__card')
+  // updateCard.classList.toggle('urgent__card')
 }
 
 //URGENT CARD STYLES
