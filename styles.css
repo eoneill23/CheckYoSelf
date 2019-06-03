@@ -302,7 +302,3 @@ hr {
 .urgent__card button {
   background-color: #FFE89D;
 }
-
-.urgent__card img.card__footerUrgent {
-  content: url('images/urgent-active.svg');
-}
