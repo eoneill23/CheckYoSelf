@@ -126,7 +126,7 @@ function appendToDo(todo) {
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <button class="card__footerBtn" disabled="true">
+          <button class="card__footerBtn">
             <img src="images/urgent.svg" class=" card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
           </button>
           <p class="card__footerMsg">Urgent</p>
@@ -162,6 +162,7 @@ function appendTaskItemsToCard(todo) {
 function clickHandler(event) {
   deleteToDo(event);
   toggleCheckMark(event);
+  toggleUrgent(event);
 }
 
 function getToDoId(event) {
@@ -197,7 +198,7 @@ function toggleCheckMark(event) {
     var todoObj = ToDos[todoIndex];
     var taskItemId = getTaskItemId(event)
     var taskItemIndex = getTaskItemIndex(taskItemId, todoObj)
-    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
+    ToDos[todoIndex].updateTask(ToDos, taskItemIndex)
     var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
     event.target.setAttribute('src', check)
   }
@@ -219,7 +220,6 @@ function getTaskItemIndex(id, obj) {
   }) 
 };
 
-
 function enableDeleteBtn(event, index) {
   var objectToDelete = ToDos[index].tasks;
   var newArray = objectToDelete.filter(function(arrayObj) {
@@ -232,6 +232,14 @@ function enableDeleteBtn(event, index) {
   else {
     return
   }
+}
+
+function toggleUrgent(event) {
+  if(event.target.closest('.card__footerUrgent')) {
+  var todoId = getToDoId(event)
+  var todoIndex = getToDoIndex(todoId)
+  ToDos[todoIndex].updateToDo(ToDos, todoIndex)
+}
 }
 
 //URGENT CARD STYLES
