@@ -20,9 +20,6 @@ nav.addEventListener('click', deleteLiFromNav)
 mainContent.addEventListener('click', clickHandler);
 window.addEventListener('load', mapLocalStorage(ToDos));
 
-
-//NEED TO WRITE FUNCTION TO REMOVE TASK LIST ITEM FROM TASKITEMS ARRAY WHEN THEY CLICK ON X BUTTON ON THE DOM SO THEY DON'T APPEND TO CARD
-
 function mapLocalStorage(oldToDos) {
   var createNewToDos = oldToDos.map(function(object){
     return createToDoList(object);
@@ -184,7 +181,6 @@ function deleteToDo(event) {
   promptReappear();
 }
 
-
 function deleteLiFromNav(event) {
   if (event.target.closest('.form__liImg')) {
     var navLiId = findNavLiId(event)
@@ -206,14 +202,16 @@ function findNavLiIndex(id) {
 
 function toggleCheckMark(event) {
   if (event.target.closest('.card__mainImg')) {
+    console.log('hello ', event.target)
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
     var todoObj = ToDos[todoIndex];
     var taskItemId = getTaskItemId(event)
     var taskItemIndex = getTaskItemIndex(taskItemId, todoObj)
+    var taskItem = ToDos[todoIndex].tasks[taskItemIndex]
     ToDos[todoIndex].updateTask(ToDos, taskItemIndex)
     var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
-    event.target.setAttribute('src', check)
+    event.target.setAttribute('src', check);
   }
 }
 
@@ -252,7 +250,8 @@ function toggleUrgent(event) {
   var todoId = getToDoId(event)
   var todoIndex = getToDoIndex(todoId)
   ToDos[todoIndex].updateToDo(ToDos, todoIndex)
-  var urgent = ToDos[todoIndex].urgent ? 'urgent__card' : 'main__article';
+  var urgent = ToDos[todoIndex].urgent ? 'images/urgent-active.svg' : 'images/urgent.svg';
+  event.target.setAttribute('src', urgent)
   }
 }
 

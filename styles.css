@@ -239,10 +239,6 @@ hr {
   padding: .5em 0 .5em 0;
 }
 
-.italicized {
-  font-style: italic;
-}
-
 .card__mainImg {
   height: 20px;
   margin-right: .5em;
@@ -261,6 +257,7 @@ hr {
 }
 
 .card__footerMsg {
+  color: #597A8B;
   margin: 0;
 }
 
@@ -277,12 +274,11 @@ hr {
   width: 30px;
 }
 
-.card__footerDlt:hover {
-  background: url('images/delete-active.svg') no-repeat;
-}
-
-.card__footerUrgent:hover {
-  background: url('images/urgent-active.svg') no-repeat;
+.card__mainLi--completed {
+  color: #597A8B;
+  display: flex; 
+  font-style: italic;
+  padding: .5em 0 .5em 0;
 }
 
 /*-------------Urgent Card----------------*/
