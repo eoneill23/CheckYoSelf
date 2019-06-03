@@ -19,7 +19,7 @@ makeTaskBtn.addEventListener('click', handleMakeTaskList);
 clearBtn.addEventListener('click', clearBtn);
 nav.addEventListener('click', deleteLiFromNav);
 mainContent.addEventListener('click', clickHandler);
-searchBar.addEventListener('keyup', search(event))
+searchBar.addEventListener('keyup', search);
 window.addEventListener('load', mapLocalStorage(ToDos));
 
 function mapLocalStorage(oldToDos) {
@@ -275,5 +275,12 @@ function updateUrgency(event, cardIndex) {
 };
 
 function search(event) {
-  
+  var searchText = event.target.value.toLowerCase();
+  var searchResults = ToDos.filter(function(arrayObj){
+    return arrayObj.title.toLowerCase().includes(searchText);
+  });
+  mainContent.innerHTML = '';
+  searchResults.map(function(todo){
+    appendToDo(todo);
+  })
 }
