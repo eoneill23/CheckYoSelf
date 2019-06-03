@@ -110,12 +110,14 @@ function handleMakeTaskList() {
   clearInputs();
   disableMCABtns();
   } else {
+    event.preventDefault()
     window.alert('You must add at least one task item to your ToDo list');
   }
 }
 
 function appendToDo(todo) {
   userPrompt.classList.add('hidden');
+  var urgent = todo.urgent ? 'urgent-active.svg' : 'urgent.svg';
   mainContent.insertAdjacentHTML('afterbegin', `<article class="main__article card" data-id="${todo.id}">
       <header class="card__header">
         <h3 class="card__headerTitle">${todo.title}</h3>
@@ -127,7 +129,7 @@ function appendToDo(todo) {
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <img src="images/urgent.svg" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
+          <img src="images/${urgent}" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
           <p class="card__footerMsg">Urgent</p>
         </div>
         <div class="card__footerDiv">
