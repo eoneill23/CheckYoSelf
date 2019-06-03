@@ -287,12 +287,20 @@ function search(event) {
   })
 };
 
-function filterUrgency() {
+function filterUrgency(event) {
+  event.target.classList.toggle('filter__search');
+  if (event.target.classList.contains('filter__search')) {
   var results = ToDos.filter(function(arrayObj){
     return arrayObj.urgent === true;
   })
   mainContent.innerHTML = '';
   results.map(function(todo){
     appendToDo(todo);
-  })
+    })
+  } else {
+    mainContent.innerHTML = '';
+    ToDos.map(function(arrayObj) {
+      appendToDo(arrayObj);
+    })
+  }
 };

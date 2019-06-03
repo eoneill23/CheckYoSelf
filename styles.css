@@ -280,6 +280,10 @@ hr {
   margin: 0;
 }
 
+.filter__search {
+  background-color: #EF4A23;
+}
+
 /*-------------Urgent Card----------------*/
 
 .urgent__card {
