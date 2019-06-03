@@ -11,6 +11,7 @@ var userPrompt = document.querySelector('.main__userPrompt');
 var mainContent = document.querySelector('.main');
 var nav = document.querySelector('.nav');
 var searchBar = document.querySelector('.header__input');
+var urgencyBtn = document.querySelector('.form__btnsFilter')
 
 taskTitleInput.addEventListener('keyup', enableMCABtns);
 taskListInput.addEventListener('keyup', enableMCABtns);
@@ -20,6 +21,7 @@ clearBtn.addEventListener('click', clearBtn);
 nav.addEventListener('click', deleteLiFromNav);
 mainContent.addEventListener('click', clickHandler);
 searchBar.addEventListener('keyup', search);
+urgencyBtn.addEventListener('click', filterUrgency)
 window.addEventListener('load', mapLocalStorage(ToDos));
 
 function mapLocalStorage(oldToDos) {
@@ -283,4 +285,14 @@ function search(event) {
   searchResults.map(function(todo){
     appendToDo(todo);
   })
-}
+};
+
+function filterUrgency() {
+  var results = ToDos.filter(function(arrayObj){
+    return arrayObj.urgent === true;
+  })
+  mainContent.innerHTML = '';
+  results.map(function(todo){
+    appendToDo(todo);
+  })
+};
