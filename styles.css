@@ -274,11 +274,10 @@ hr {
   width: 30px;
 }
 
-.card__mainLi--completed {
-  color: #597A8B;
-  display: flex; 
+.card__mainLi--completed { 
+  color: #3C6577;
   font-style: italic;
-  padding: .5em 0 .5em 0;
+  margin: 0;
 }
 
 /*-------------Urgent Card----------------*/

@@ -150,10 +150,11 @@ function appendTaskItemsToCard(todo) {
   var taskArea = '';
   for(var i=0; i < todo.tasks.length; i++) {
     var checkStatus = todo.tasks[i].completed ? 'checkbox-active.svg' : 'checkbox.svg';
+    var pClass = todo.tasks[i].completed ? 'card__mainLi--completed' : 'card__mainPara';
     taskArea += 
     `<li class="card__mainLi" data-id="${todo.tasks[i].id}">
         <img class="card__mainImg" src="images/${checkStatus}" alt="Click here to check off this task!">
-        <p class="card__mainPara">${todo.tasks[i].title}</p>
+        <p class="${pClass}">${todo.tasks[i].title}</p>
       </li>`
   } return taskArea;
 }
@@ -204,7 +205,6 @@ function findNavLiIndex(id) {
 
 function toggleCheckMark(event) {
   if (event.target.closest('.card__mainImg')) {
-    console.log(event)
     var todoId = getToDoId(event)
     var todoIndex = getToDoIndex(todoId)
     var todoObj = ToDos[todoIndex];
@@ -220,13 +220,8 @@ function toggleCheckMark(event) {
 
 function updateStyle(event, cardIndex, itemIndex) {
   var paragraph = event.target.nextElementSibling;
-  if(ToDos[cardIndex].tasks[itemIndex].completed === true) {
-    paragraph.style.color = '#3C6577';
-    paragraph.style.fontStyle = 'italic'
-  } else {
-    paragraph.style.color = '#1F1F3D';
-    paragraph.style.fontStyle = 'normal';
-  }
+  paragraph.classList.toggle('card__mainLi--completed');
+  paragraph.classList.toggle('card__mainPara');
 } 
 
 function findTask(obj, id) {
