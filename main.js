@@ -98,6 +98,7 @@ function createToDoList(obj) {
 }
 
 function handleMakeTaskList() {
+  if (TaskListItems.length !== 0) {
   event.preventDefault();
   var newTodo = new ToDoList ({
     id: Date.now(),
@@ -111,6 +112,9 @@ function handleMakeTaskList() {
   TaskListItems = [];
   clearInputs();
   disableMCABtns();
+  } else {
+    window.alert('You must add at least one task item to your ToDo list');
+  }
 }
 
 function appendToDo(todo) {
@@ -126,15 +130,11 @@ function appendToDo(todo) {
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <button class="card__footerBtn">
-            <img src="images/urgent.svg" class=" card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
-          </button>
+          <img src="images/urgent.svg" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
           <p class="card__footerMsg">Urgent</p>
         </div>
         <div class="card__footerDiv">
-          <button class="button card__footerBtn card__footerDlt">
-            <img src="images/delete.svg" class=" card__footerImg card__footerDlt" alt="Click here to delete this task">
-          </button>
+          <img src="images/delete.svg" class="card__footerImg card__footerDlt" alt="Click here to delete this task">
           <p class="card__footerMsg">Delete</p>
         </div>
       </footer>
@@ -187,8 +187,21 @@ function deleteToDo(event) {
 
 function deleteLiFromNav(event) {
   if (event.target.closest('.form__liImg')) {
+    var navLiId = findNavLiId(event)
+    var navLiIndex = findNavLiIndex(navLiId)
+    TaskListItems.splice(navLiIndex, 1)
     event.target.closest('.form__li').remove();
   }
+}
+
+function findNavLiId(event) {
+  return event.target.closest('.form__li').getAttribute('data-id');
+}
+
+function findNavLiIndex(id) {
+  return TaskListItems.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id);
+  });
 }
 
 function toggleCheckMark(event) {
@@ -239,7 +252,8 @@ function toggleUrgent(event) {
   var todoId = getToDoId(event)
   var todoIndex = getToDoIndex(todoId)
   ToDos[todoIndex].updateToDo(ToDos, todoIndex)
-}
+  var urgent = ToDos[todoIndex].urgent ? 'urgent__card' : 'main__article';
+  }
 }
 
 //URGENT CARD STYLES

@@ -136,7 +136,7 @@ form >* {
   background-color: #1F1F3D;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
-  border: 1px solid #1F1F3D;
+  border: 2px solid #1F1F3D;
   height: 50px;
   padding: .5em;
   width: 50px;
@@ -264,22 +264,26 @@ hr {
   margin: 0;
 }
 
-.card__footerBtn {
+.card__footerImg {
   border: none;
-  height: 30px;
+  height: 20px;
   margin-left: .5em;
   padding: .25em;
-  width: 30px;
-}
-
-.card__footerImg {
-  height: 20px;
   width: 20px;
 }
 
-/*.card__footerDlt:hover {
-  background: url(images/delete-active.svg) no-repeat;
-}*/
+.card__footerImg {
+  height: 30px;
+  width: 30px;
+}
+
+.card__footerDlt:hover {
+  background: url('images/delete-active.svg') no-repeat;
+}
+
+.card__footerUrgent:hover {
+  background: url('images/urgent-active.svg') no-repeat;
+}
 
 /*-------------Urgent Card----------------*/
 
