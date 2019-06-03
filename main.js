@@ -6,18 +6,20 @@ var makeTaskBtn = document.querySelector('.form__btnsAddTask');
 var clearBtn = document.querySelector('.form__btnsClear');
 var addBtn = document.querySelector('.div__btnAddTask');
 var taskListItems = document.querySelector('.form__ul');
-var taskListUl = document.querySelector('.form__ul')
-var userPrompt = document.querySelector('.main__userPrompt')
-var mainContent = document.querySelector('.main')
-var nav = document.querySelector('.nav')
+var taskListUl = document.querySelector('.form__ul');
+var userPrompt = document.querySelector('.main__userPrompt');
+var mainContent = document.querySelector('.main');
+var nav = document.querySelector('.nav');
+var searchBar = document.querySelector('.header__input');
 
 taskTitleInput.addEventListener('keyup', enableMCABtns);
 taskListInput.addEventListener('keyup', enableMCABtns);
 addBtn.addEventListener('click', createTaskItem);
 makeTaskBtn.addEventListener('click', handleMakeTaskList);
 clearBtn.addEventListener('click', clearBtn);
-nav.addEventListener('click', deleteLiFromNav)
+nav.addEventListener('click', deleteLiFromNav);
 mainContent.addEventListener('click', clickHandler);
+searchBar.addEventListener('keyup', search(event))
 window.addEventListener('load', mapLocalStorage(ToDos));
 
 function mapLocalStorage(oldToDos) {
@@ -25,14 +27,14 @@ function mapLocalStorage(oldToDos) {
     return createToDoList(object);
   })
   ToDos = createNewToDos;
-}
+};
 
 function enableMCABtns() {
   makeTaskBtn.disabled = false;
   clearBtn.disabled = false;
   addBtn.disabled = false;
   disableMCABtns();
-}
+};
 
 function disableMCABtns() {
   if (taskTitleInput.value === '' || taskListInput.value === '') {
@@ -40,13 +42,13 @@ function disableMCABtns() {
   clearBtn.disabled = true;
   addBtn.disabled = true;
   }
-}
+};
 
 function clearBtn() {
   event.preventDefault();
   taskTitleInput.value = '';
   taskListInput.value = '';
-}
+};
 
 function appendTaskItem(object) {
   event.preventDefault();
@@ -59,7 +61,7 @@ function appendTaskItem(object) {
   taskListUl.innerHTML += taskItem;
   taskListInput.value = '';
   addBtn.disabled = true;
-}
+};
 
 function createTaskItem() {
   event.preventDefault();
@@ -71,13 +73,13 @@ function createTaskItem() {
   appendTaskItem(newTodoItem);
   TaskListItems.push(newTodoItem);
   return newTodoItem;
-}
+};
 
 function clearInputs() {
   taskTitleInput.value = '';
   taskListInput.value = '';
   taskListUl.innerHTML = '';
-}
+};
 
 function createToDoList(obj) {
   var uniqueId = obj.id;
@@ -92,7 +94,7 @@ function createToDoList(obj) {
   })
   appendToDo(newTodo);
   return newTodo;
-}
+};
 
 function handleMakeTaskList() {
   if (TaskListItems.length !== 0) {
@@ -113,7 +115,7 @@ function handleMakeTaskList() {
     event.preventDefault()
     window.alert('You must add at least one task item to your ToDo list');
   }
-}
+};
 
 function appendToDo(todo) {
   userPrompt.classList.add('hidden');
@@ -139,13 +141,13 @@ function appendToDo(todo) {
         </div>
       </footer>
     </article>`)
-}         
+};         
 
 function promptReappear() {
   if (ToDos.length === 0) {
     userPrompt.classList.remove('hidden');
   }
-}
+};
 
 function appendTaskItemsToCard(todo) {
   var taskArea = '';
@@ -158,23 +160,23 @@ function appendTaskItemsToCard(todo) {
         <p class="${pClass}">${todo.tasks[i].title}</p>
       </li>`
   } return taskArea;
-}
+};
 
 function clickHandler(event) {
   deleteToDo(event);
   toggleCheckMark(event);
   toggleUrgent(event);
-}
+};
 
 function getToDoId(event) {
   return event.target.closest('.card').getAttribute('data-id');
-}
+};
 
 function getToDoIndex(id) {
   return ToDos.findIndex(function(arrayObj) {
     return arrayObj.id == parseInt(id);
   })
-}
+};
 
 function deleteToDo(event) {
   if (event.target.closest('.card__footerDlt')) {
@@ -183,7 +185,7 @@ function deleteToDo(event) {
     enableDeleteBtn(event, todoIndex)
   }
   promptReappear();
-}
+};
 
 function deleteLiFromNav(event) {
   if (event.target.closest('.form__liImg')) {
@@ -192,17 +194,17 @@ function deleteLiFromNav(event) {
     TaskListItems.splice(navLiIndex, 1)
     event.target.closest('.form__li').remove();
   }
-}
+};
 
 function findNavLiId(event) {
   return event.target.closest('.form__li').getAttribute('data-id');
-}
+};
 
 function findNavLiIndex(id) {
   return TaskListItems.findIndex(function(arrayObj) {
     return arrayObj.id == parseInt(id);
-  });
-}
+  })
+};
 
 function toggleCheckMark(event) {
   if (event.target.closest('.card__mainImg')) {
@@ -215,25 +217,25 @@ function toggleCheckMark(event) {
     ToDos[todoIndex].updateTask(ToDos, taskItemIndex)
     var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
     event.target.setAttribute('src', check);
-    updateStyle(event, todoIndex, taskItemIndex)
+    updateStyle(event);
   }
-}
+};
 
-function updateStyle(event, cardIndex, itemIndex) {
+function updateStyle(event) {
   var paragraph = event.target.nextElementSibling;
   paragraph.classList.toggle('card__mainLi--completed');
   paragraph.classList.toggle('card__mainPara');
-} 
+};
 
 function findTask(obj, id) {
     return obj.tasks.findIndex(function(arrayObj) {
     return arrayObj.id == parseInt(id);
-  }) 
+  })
 };
 
 function getTaskItemId(event) {
  return event.target.closest('.card__mainLi').getAttribute('data-id');
-}
+};
 
 function getTaskItemIndex(id, obj) {
     return obj.tasks.findIndex(function(arrayObj) {
@@ -247,58 +249,31 @@ function enableDeleteBtn(event, index) {
      return arrayObj.completed === true;
   });
   if (newArray.length === objectToDelete.length) {
-    event.target.closest('.card').remove()
-    ToDos[index].deleteFromStorage(ToDos, index)
+    event.target.closest('.card').remove();
+    ToDos[index].deleteFromStorage(ToDos, index);
   }
   else {
-    return
+    return;
   }
 };
 
 function toggleUrgent(event) {
   if(event.target.closest('.card__footerUrgent')) {
-  var todoId = getToDoId(event)
-  var todoIndex = getToDoIndex(todoId)
-  ToDos[todoIndex].updateToDo(ToDos, todoIndex)
+  var todoId = getToDoId(event);
+  var todoIndex = getToDoIndex(todoId);
+  ToDos[todoIndex].updateToDo(ToDos, todoIndex);
   var urgent = ToDos[todoIndex].urgent ? 'images/urgent-active.svg' : 'images/urgent.svg';
   event.target.setAttribute('src', urgent);
-  updateUrgency(event, todoIndex)
+  updateUrgency(event, todoIndex);
   }
 };
 
 function updateUrgency(event, cardIndex) {
   var updateCard = event.target.closest('.card');
   var paragraph = event.target.nextElementSibling;
-  updateCard.classList.toggle('urgent__card')
-}
+  updateCard.classList.toggle('urgent__card');
+};
 
-//URGENT CARD STYLES
-  // <article class="urgent__card main__article card" data-id="">
-  //     <header class="card__header">
-  //       <h3 class="card__headerTitle">Todo list title goes here</h3>
-  //     </header>
-  //     <main class="card__main">
-  //       <div class="card__mainDiv">
-  //         <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
-  //         <p class="card__mainPara">Task list items go here.</p>
-  //       </div>
-  //       <div class="card__mainDiv">
-  //         <img class="card__mainImg" src="images/checkbox.svg" alt="Click here to check off this task!">
-  //         <p class="card__mainPara">Task list items go here.</p>
-  //       </div>
-  //     </main>
-  //     <footer class="card__footer">
-  //       <div class="card__footerDiv">
-  //         <button class="card__footerBtn" disabled="true">
-  //           <img src="images/urgent.svg" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
-  //         </button>
-  //           <p class="card__footerMsg card__footerMsgUrgent">Urgent</p>
-  //       </div>
-  //       <div class="card__footerDiv">
-  //         <button class="button card__footerBtn">
-  //           <img class="card__footerImg card__footerDlt" src="images/delete.svg" alt="Click here to delete this task">
-  //         </button>
-  //         <p class="card__footerMsg">Delete</p>
-  //       </div>
-  //     </footer>
-  //   </article>
+function search(event) {
+  
+}
