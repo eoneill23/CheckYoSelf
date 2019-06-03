@@ -16,17 +16,14 @@ class ToDoList {
     this.saveToStorage(toDoArray);
   }
 
-  updateCheck(toDos, itemIndex) {
+  updateToDo(toDoList, cardIndex) {
+    toDoList[cardIndex].urgent = !toDoList[cardIndex].urgent
+    this.saveToStorage(toDoList);
+  }
+
+  updateTask(toDos, itemIndex) {
     this.tasks[itemIndex].completed = !this.tasks[itemIndex].completed;
     this.saveToStorage(toDos)
-  }
-
-  updateToDo() {
-
-  }
-
-  updateTask() {
-
   }
 }
 

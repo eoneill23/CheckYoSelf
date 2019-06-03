@@ -20,9 +20,6 @@ nav.addEventListener('click', deleteLiFromNav)
 mainContent.addEventListener('click', clickHandler);
 window.addEventListener('load', mapLocalStorage(ToDos));
 
-
-//NEED TO WRITE FUNCTION TO REMOVE TASK LIST ITEM FROM TASKITEMS ARRAY WHEN THEY CLICK ON X BUTTON ON THE DOM SO THEY DON'T APPEND TO CARD
-
 function mapLocalStorage(oldToDos) {
   var createNewToDos = oldToDos.map(function(object){
     return createToDoList(object);
@@ -98,6 +95,7 @@ function createToDoList(obj) {
 }
 
 function handleMakeTaskList() {
+  if (TaskListItems.length !== 0) {
   event.preventDefault();
   var newTodo = new ToDoList ({
     id: Date.now(),
@@ -111,10 +109,15 @@ function handleMakeTaskList() {
   TaskListItems = [];
   clearInputs();
   disableMCABtns();
+  } else {
+    event.preventDefault()
+    window.alert('You must add at least one task item to your ToDo list');
+  }
 }
 
 function appendToDo(todo) {
   userPrompt.classList.add('hidden');
+  var urgent = todo.urgent ? 'urgent-active.svg' : 'urgent.svg';
   mainContent.insertAdjacentHTML('afterbegin', `<article class="main__article card" data-id="${todo.id}">
       <header class="card__header">
         <h3 class="card__headerTitle">${todo.title}</h3>
@@ -126,15 +129,11 @@ function appendToDo(todo) {
       </main>
       <footer class="card__footer">
         <div class="card__footerDiv">
-          <button class="card__footerBtn" disabled="true">
-            <img src="images/urgent.svg" class=" card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
-          </button>
+          <img src="images/${urgent}" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
           <p class="card__footerMsg">Urgent</p>
         </div>
         <div class="card__footerDiv">
-          <button class="button card__footerBtn card__footerDlt">
-            <img src="images/delete.svg" class=" card__footerImg card__footerDlt" alt="Click here to delete this task">
-          </button>
+          <img src="images/delete.svg" class="card__footerImg card__footerDlt" alt="Click here to delete this task">
           <p class="card__footerMsg">Delete</p>
         </div>
       </footer>
@@ -151,10 +150,11 @@ function appendTaskItemsToCard(todo) {
   var taskArea = '';
   for(var i=0; i < todo.tasks.length; i++) {
     var checkStatus = todo.tasks[i].completed ? 'checkbox-active.svg' : 'checkbox.svg';
+    var pClass = todo.tasks[i].completed ? 'card__mainLi--completed' : 'card__mainPara';
     taskArea += 
     `<li class="card__mainLi" data-id="${todo.tasks[i].id}">
         <img class="card__mainImg" src="images/${checkStatus}" alt="Click here to check off this task!">
-        <p class="card__mainPara">${todo.tasks[i].title}</p>
+        <p class="${pClass}">${todo.tasks[i].title}</p>
       </li>`
   } return taskArea;
 }
@@ -162,6 +162,7 @@ function appendTaskItemsToCard(todo) {
 function clickHandler(event) {
   deleteToDo(event);
   toggleCheckMark(event);
+  toggleUrgent(event);
 }
 
 function getToDoId(event) {
@@ -183,11 +184,23 @@ function deleteToDo(event) {
   promptReappear();
 }
 
-
 function deleteLiFromNav(event) {
   if (event.target.closest('.form__liImg')) {
+    var navLiId = findNavLiId(event)
+    var navLiIndex = findNavLiIndex(navLiId)
+    TaskListItems.splice(navLiIndex, 1)
     event.target.closest('.form__li').remove();
   }
+}
+
+function findNavLiId(event) {
+  return event.target.closest('.form__li').getAttribute('data-id');
+}
+
+function findNavLiIndex(id) {
+  return TaskListItems.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id);
+  });
 }
 
 function toggleCheckMark(event) {
@@ -197,11 +210,19 @@ function toggleCheckMark(event) {
     var todoObj = ToDos[todoIndex];
     var taskItemId = getTaskItemId(event)
     var taskItemIndex = getTaskItemIndex(taskItemId, todoObj)
-    ToDos[todoIndex].updateCheck(ToDos, taskItemIndex)
+    var taskItem = ToDos[todoIndex].tasks[taskItemIndex]
+    ToDos[todoIndex].updateTask(ToDos, taskItemIndex)
     var check = todoObj.tasks[taskItemIndex].completed ? 'images/checkbox-active.svg' : 'images/checkbox.svg'
-    event.target.setAttribute('src', check)
+    event.target.setAttribute('src', check);
+    updateStyle(event, todoIndex, taskItemIndex)
   }
 }
+
+function updateStyle(event, cardIndex, itemIndex) {
+  var paragraph = event.target.nextElementSibling;
+  paragraph.classList.toggle('card__mainLi--completed');
+  paragraph.classList.toggle('card__mainPara');
+} 
 
 function findTask(obj, id) {
     return obj.tasks.findIndex(function(arrayObj) {
@@ -219,7 +240,6 @@ function getTaskItemIndex(id, obj) {
   }) 
 };
 
-
 function enableDeleteBtn(event, index) {
   var objectToDelete = ToDos[index].tasks;
   var newArray = objectToDelete.filter(function(arrayObj) {
@@ -231,6 +251,16 @@ function enableDeleteBtn(event, index) {
   }
   else {
     return
+  }
+}
+
+function toggleUrgent(event) {
+  if(event.target.closest('.card__footerUrgent')) {
+  var todoId = getToDoId(event)
+  var todoIndex = getToDoIndex(todoId)
+  ToDos[todoIndex].updateToDo(ToDos, todoIndex)
+  var urgent = ToDos[todoIndex].urgent ? 'images/urgent-active.svg' : 'images/urgent.svg';
+  event.target.setAttribute('src', urgent)
   }
 }
 
