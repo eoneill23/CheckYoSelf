@@ -118,7 +118,8 @@ function handleMakeTaskList() {
 function appendToDo(todo) {
   userPrompt.classList.add('hidden');
   var urgent = todo.urgent ? 'urgent-active.svg' : 'urgent.svg';
-  mainContent.insertAdjacentHTML('afterbegin', `<article class="main__article card" data-id="${todo.id}">
+  var urgentClass = todo.urgent ? 'main__article card urgent__card' : 'main__article card';
+  mainContent.insertAdjacentHTML('afterbegin', `<article class="${urgentClass}" data-id="${todo.id}">
       <header class="card__header">
         <h3 class="card__headerTitle">${todo.title}</h3>
       </header>
@@ -130,7 +131,7 @@ function appendToDo(todo) {
       <footer class="card__footer">
         <div class="card__footerDiv">
           <img src="images/${urgent}" class="card__footerImg card__footerUrgent" alt="Click here to make this task urgent">
-          <p class="card__footerMsg">Urgent</p>
+          <p class="card__footerMsg card__footerMsgUrgent">Urgent</p>
         </div>
         <div class="card__footerDiv">
           <img src="images/delete.svg" class="card__footerImg card__footerDlt" alt="Click here to delete this task">
@@ -252,7 +253,7 @@ function enableDeleteBtn(event, index) {
   else {
     return
   }
-}
+};
 
 function toggleUrgent(event) {
   if(event.target.closest('.card__footerUrgent')) {
@@ -260,8 +261,15 @@ function toggleUrgent(event) {
   var todoIndex = getToDoIndex(todoId)
   ToDos[todoIndex].updateToDo(ToDos, todoIndex)
   var urgent = ToDos[todoIndex].urgent ? 'images/urgent-active.svg' : 'images/urgent.svg';
-  event.target.setAttribute('src', urgent)
+  event.target.setAttribute('src', urgent);
+  updateUrgency(event, todoIndex)
   }
+};
+
+function updateUrgency(event, cardIndex) {
+  var updateCard = event.target.closest('.card');
+  var paragraph = event.target.nextElementSibling;
+  updateCard.classList.toggle('urgent__card')
 }
 
 //URGENT CARD STYLES
