@@ -308,3 +308,56 @@ hr {
 .urgent__card button {
   background-color: #FFE89D;
 }
+
+/*-------------Media Queries--------------*/
+
+@media screen and (max-width: 985px) {
+  .userPrompt__para {
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .form__btns {
+    font-size: 1em;
+  }
+
+  .input {
+  font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .form__btns {
+    font-size: .75em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    grid-template-columns: 100%;
+    grid-template-rows: 25%; 
+    grid-template-areas: 
+    "header"
+    "nav"
+    "main"
+  }
+
+  .page__header {
+    display: block;
+  }
+
+  .header__h1 {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .header__div {
+    width: 100%;
+    height: 30%;
+  }
+
+  .form__btns {
+    font-size: 1.5em;
+  }
+}
