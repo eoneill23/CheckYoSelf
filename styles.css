@@ -166,6 +166,14 @@ hr {
   width: 100%;
 }
 
+.form__inputTitle {
+    margin-top: .25em;
+  }
+
+.form__divAddTask {
+    margin-top: .3em;
+  }
+
 /*-------------------Main----------------*/
 
 .main {
@@ -336,7 +344,7 @@ hr {
 @media screen and (max-width: 500px) {
   body {
     grid-template-columns: 100%;
-    grid-template-rows: 25%; 
+    grid-template-rows: 23%; 
     grid-template-areas: 
     "header"
     "nav"
@@ -348,7 +356,7 @@ hr {
   }
 
   .header__h1 {
-    margin-top: 0;
+    margin: 10px 0 30px 0;
     text-align: center;
   }
 
@@ -359,5 +367,17 @@ hr {
 
   .form__btns {
     font-size: 1.5em;
+  }
+
+  .input {
+    font-size: 1.5em;
+  }
+
+  .form__inputTitle {
+    margin-top: .25em;
+  }
+
+  .form__divAddTask {
+    margin-top: .3em;
   }
 }
