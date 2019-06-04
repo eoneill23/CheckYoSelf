@@ -48,7 +48,6 @@ function disableMABtns() {
 
 function disableClearBtn() {
   (taskTitleInput.value === '' && taskListInput.value === '')
-  console.log('Hello')
   clearBtn.disabled = false;
 }
 
@@ -131,7 +130,7 @@ function handleMakeTaskList() {
   TaskListItems = [];
   enableFilterBtn();
   clearInputs();
-  disableMCABtns();
+  disableMABtns();
   } else {
     event.preventDefault()
     window.alert('You must add at least one task item to your ToDo list');
