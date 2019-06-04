@@ -48,7 +48,6 @@ function disableMABtns() {
 
 function disableClearBtn() {
   (taskTitleInput.value === '' && taskListInput.value === '')
-  console.log('Hello')
   clearBtn.disabled = false;
 }
 
