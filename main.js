@@ -13,8 +13,8 @@ var nav = document.querySelector('.nav');
 var searchBar = document.querySelector('.header__input');
 var urgencyBtn = document.querySelector('.form__btnsFilter')
 
-taskTitleInput.addEventListener('keyup', enableMCABtns);
-taskListInput.addEventListener('keyup', enableMCABtns);
+taskTitleInput.addEventListener('keyup', enableMABtns);
+taskListInput.addEventListener('keyup', enableMABtns);
 addBtn.addEventListener('click', createTaskItem);
 makeTaskBtn.addEventListener('click', handleMakeTaskList);
 clearBtn.addEventListener('click', clearBtn);
@@ -31,20 +31,26 @@ function mapLocalStorage(oldToDos) {
   ToDos = createNewToDos;
 };
 
-function enableMCABtns() {
+function enableMABtns() {
   makeTaskBtn.disabled = false;
-  clearBtn.disabled = false;
   addBtn.disabled = false;
-  disableMCABtns();
+  clearBtn.disabled = false;
+  disableMABtns();
 };
 
-function disableMCABtns() {
+function disableMABtns() {
+  disableClearBtn();
   if (taskTitleInput.value === '' || taskListInput.value === '') {
   makeTaskBtn.disabled = true;
-  clearBtn.disabled = true;
   addBtn.disabled = true;
   }
 };
+
+function disableClearBtn() {
+  (taskTitleInput.value === '' && taskListInput.value === '')
+  console.log('Hello')
+  clearBtn.disabled = false;
+}
 
 function enableFilterBtn() {
   if (ToDos.length > 0) {
