@@ -15,7 +15,7 @@ body {
   grid-template-areas: 
     "header header header"
     "nav main main"
-    "nav main main";
+    "nav main main"
 }
 
 /*-------------------Header----------------*/
@@ -78,6 +78,7 @@ body {
 .nav {
   grid-area: nav;
   background-color: #587A8A;
+  border-right: 2px solid #3E6577;
 }
 
 .form__btns {
@@ -136,7 +137,7 @@ form >* {
   background-color: #1F1F3D;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
-  border: 2px solid #1F1F3D;
+  border: none;
   height: 50px;
   padding: .5em;
   width: 50px;
@@ -154,7 +155,7 @@ form >* {
 }
 
 hr {
-  border-color: #3E6577;
+  border: 1px solid #3E6577;
 }
 
 .form__divFilter {
@@ -164,6 +165,14 @@ hr {
 .form__btnsFilter {
   width: 100%;
 }
+
+.form__inputTitle {
+    margin-top: .25em;
+  }
+
+.form__divAddTask {
+    margin-top: .3em;
+  }
 
 /*-------------------Main----------------*/
 
@@ -282,6 +291,7 @@ hr {
 
 .filter__search {
   background-color: #EF4A23;
+  border: 2px solid #752E1F;
 }
 
 /*-------------Urgent Card----------------*/
@@ -305,4 +315,69 @@ hr {
 
 .urgent__card button {
   background-color: #FFE89D;
+}
+
+/*-------------Media Queries--------------*/
+
+@media screen and (max-width: 985px) {
+  .userPrompt__para {
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .form__btns {
+    font-size: 1em;
+  }
+
+  .input {
+  font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .form__btns {
+    font-size: .75em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    grid-template-columns: 100%;
+    grid-template-rows: 23%; 
+    grid-template-areas: 
+    "header"
+    "nav"
+    "main"
+  }
+
+  .page__header {
+    display: block;
+  }
+
+  .header__h1 {
+    margin: 10px 0 30px 0;
+    text-align: center;
+  }
+
+  .header__div {
+    width: 100%;
+    height: 30%;
+  }
+
+  .form__btns {
+    font-size: 1.5em;
+  }
+
+  .input {
+    font-size: 1.5em;
+  }
+
+  .form__inputTitle {
+    margin-top: .25em;
+  }
+
+  .form__divAddTask {
+    margin-top: .3em;
+  }
 }
