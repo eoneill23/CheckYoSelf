@@ -15,7 +15,7 @@ body {
   grid-template-areas: 
     "header header header"
     "nav main main"
-    "nav main main";
+    "nav main main"
 }
 
 /*-------------------Header----------------*/
@@ -78,6 +78,7 @@ body {
 .nav {
   grid-area: nav;
   background-color: #587A8A;
+  border-right: 2px solid #3E6577;
 }
 
 .form__btns {
@@ -136,7 +137,7 @@ form >* {
   background-color: #1F1F3D;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
-  border: 2px solid #1F1F3D;
+  border: none;
   height: 50px;
   padding: .5em;
   width: 50px;
@@ -154,7 +155,7 @@ form >* {
 }
 
 hr {
-  border-color: #3E6577;
+  border: 1px solid #3E6577;
 }
 
 .form__divFilter {
@@ -282,6 +283,7 @@ hr {
 
 .filter__search {
   background-color: #EF4A23;
+  border: 2px solid #752E1F;
 }
 
 /*-------------Urgent Card----------------*/

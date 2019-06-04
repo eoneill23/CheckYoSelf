@@ -46,6 +46,18 @@ function disableMCABtns() {
   }
 };
 
+function enableFilterBtn() {
+  if (ToDos.length > 0) {
+    urgencyBtn.disabled = false;
+  }
+};
+
+function disableFilterBtn() {
+  if (ToDos.length === 0) {
+    urgencyBtn.disabled = true;
+  }
+};
+
 function clearBtn() {
   event.preventDefault();
   taskTitleInput.value = '';
@@ -111,6 +123,7 @@ function handleMakeTaskList() {
   ToDos.push(newTodo);
   newTodo.saveToStorage(ToDos);
   TaskListItems = [];
+  enableFilterBtn();
   clearInputs();
   disableMCABtns();
   } else {
@@ -186,6 +199,7 @@ function deleteToDo(event) {
     var todoIndex = getToDoIndex(todoId)
     enableDeleteBtn(event, todoIndex)
   }
+  disableFilterBtn();
   promptReappear();
 };
 
