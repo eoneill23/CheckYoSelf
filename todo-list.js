@@ -25,4 +25,4 @@ class ToDoList {
     this.tasks[itemIndex].completed = !this.tasks[itemIndex].completed;
     this.saveToStorage(toDos)
   }
-}
+};
