@@ -23,6 +23,6 @@ class ToDoList {
 
   updateTask(toDos, itemIndex) {
     this.tasks[itemIndex].completed = !this.tasks[itemIndex].completed;
-    this.saveToStorage(toDos)
+    this.saveToStorage(toDos);
   }
-};
+}
