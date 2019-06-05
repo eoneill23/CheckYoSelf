@@ -28,7 +28,7 @@ window.addEventListener('load', windowHandler);
 function windowHandler() {
   mapLocalStorage(ToDos)
   enableFilterBtn();
-}
+};
 
 function mapLocalStorage(oldToDos) {
   var createNewToDos = oldToDos.map(function(object){
@@ -311,7 +311,6 @@ function search(event) {
     appendToDo(todo);
   })
 };
-
 
 function filterUrgency(event) {
   event.target.classList.toggle('filter__search');

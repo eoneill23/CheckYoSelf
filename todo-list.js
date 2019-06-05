@@ -26,11 +26,3 @@ class ToDoList {
     this.saveToStorage(toDos)
   }
 }
-
-// class ToDoItem {
-//   constructor(obj) {
-//     this.id = obj.id;
-//     this.title = obj.title;
-//     this.completed = obj.completed || false;
-//   }
-// }
