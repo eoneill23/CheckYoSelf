@@ -8,14 +8,12 @@
 body {
   display: grid;
   height: 100vh;
-  margin: 0;
-  width: 100%;
   grid-template-columns: 30% 35% 35%;
   grid-template-rows: 10%; 
   grid-template-areas: 
     "header header header"
     "nav main main"
-    "nav main main"
+    "nav main main";
 }
 
 /*-------------------Header----------------*/
@@ -27,7 +25,7 @@ body {
   grid-area: header;
   grid-template-rows: 10%;
   justify-content: space-between;
-  padding: .75em;
+  padding: 1em;
 }
 
 .header__h1 {
@@ -48,7 +46,7 @@ body {
 
 .header__input {
   border-radius: 0 3px 3px 0;
-  border:1px solid white;
+  border: 1px solid white;
   padding-left: .25em;
   width: 100%;
 }
@@ -60,7 +58,6 @@ body {
 .header__btn {
   background-color: #C8D3D9;
   border-radius: 3px 0 0 3px;
-  height: 100%;
   padding: .25em .5em 0 .5em;
   width: 60px;
 }
@@ -206,9 +203,6 @@ hr {
   width: 100%;
 }
 
-.hidden {
-  display: none;
-}
 
 .userPrompt__para {
   color: lightgrey;
@@ -283,6 +277,28 @@ hr {
   width: 30px;
 }
 
+.main__urgencyPrompt {
+  background-color: #FAFDFF;
+  border: 2px solid black;
+  break-inside: avoid;
+  height: 300px; 
+  min-height: 100px;
+  padding: .25em;
+  padding: 1em;
+  width: 100%;
+}
+
+.urgencyPrompt__para {
+  color: black;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
 .card__mainLi--completed { 
   color: #3C6577;
   font-style: italic;
@@ -335,20 +351,14 @@ hr {
   }
 }
 
-@media screen and (max-width: 585px) {
-  .form__btns {
-    font-size: .75em;
-  }
-}
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   body {
     grid-template-columns: 100%;
     grid-template-rows: 23%; 
     grid-template-areas: 
     "header"
     "nav"
-    "main"
+    "main";
   }
 
   .page__header {
@@ -356,7 +366,8 @@ hr {
   }
 
   .header__h1 {
-    margin: 10px 0 30px 0;
+    font-size: 3em;
+    margin: 20px 0 30px 0;
     text-align: center;
   }
 
