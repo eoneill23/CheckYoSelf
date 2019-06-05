@@ -12,6 +12,7 @@ var mainContent = document.querySelector('.main');
 var nav = document.querySelector('.nav');
 var searchBar = document.querySelector('.header__input');
 var urgencyBtn = document.querySelector('.form__btnsFilter')
+var urgencyPrompt = document.querySelector('.main__urgencyPrompt')
 
 taskTitleInput.addEventListener('keyup', enableMABtns);
 taskListInput.addEventListener('keyup', enableMABtns);
@@ -22,7 +23,12 @@ nav.addEventListener('click', deleteLiFromNav);
 mainContent.addEventListener('click', clickHandler);
 searchBar.addEventListener('keyup', search);
 urgencyBtn.addEventListener('click', filterUrgency)
-window.addEventListener('load', mapLocalStorage(ToDos));
+window.addEventListener('load', windowHandler);
+
+function windowHandler() {
+  mapLocalStorage(ToDos)
+  enableFilterBtn();
+}
 
 function mapLocalStorage(oldToDos) {
   var createNewToDos = oldToDos.map(function(object){
@@ -49,7 +55,7 @@ function disableMABtns() {
 function disableClearBtn() {
   (taskTitleInput.value === '' && taskListInput.value === '')
   clearBtn.disabled = false;
-}
+};
 
 function enableFilterBtn() {
   if (ToDos.length > 0) {
@@ -249,18 +255,18 @@ function updateStyle(event) {
 };
 
 function findTask(obj, id) {
-    return obj.tasks.findIndex(function(arrayObj) {
-    return arrayObj.id == parseInt(id);
+  return obj.tasks.findIndex(function(arrayObj) {
+  return arrayObj.id == parseInt(id);
   })
 };
 
 function getTaskItemId(event) {
- return event.target.closest('.card__mainLi').getAttribute('data-id');
+  return event.target.closest('.card__mainLi').getAttribute('data-id');
 };
 
 function getTaskItemIndex(id, obj) {
-    return obj.tasks.findIndex(function(arrayObj) {
-    return arrayObj.id == parseInt(id);
+  return obj.tasks.findIndex(function(arrayObj) {
+  return arrayObj.id == parseInt(id);
   }) 
 };
 
@@ -306,12 +312,14 @@ function search(event) {
   })
 };
 
+
 function filterUrgency(event) {
   event.target.classList.toggle('filter__search');
   if (event.target.classList.contains('filter__search')) {
   var results = ToDos.filter(function(arrayObj){
     return arrayObj.urgent === true;
   })
+  urgentPrompt(results)
   mainContent.innerHTML = '';
   results.map(function(todo){
     appendToDo(todo);
@@ -321,5 +329,11 @@ function filterUrgency(event) {
     ToDos.map(function(arrayObj) {
       appendToDo(arrayObj);
     })
+  } 
+};
+
+function urgentPrompt(results) {
+  if(results.length === 0) {
+    urgencyPrompt.classList.toggle('hidden')
   }
 };

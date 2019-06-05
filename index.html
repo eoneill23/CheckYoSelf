@@ -7,43 +7,46 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <header class="page__header header">
-    <h1 class="header__h1">CHECK <span class="header__span">YO'</span> SELF</h1>
-    <div class="header__div">
-      <button class="button header__btn" disabled="true">
-        <img src="images/search.svg" class="header__img">
-      </button>
-      <input type="text" class="header__input input" placeholder="Search">
-    </div>
-  </header>
-  <nav class="nav">
-    <form class="nav__form form">
-      <label class="form__labels form__labelTitle" for="form__inputTitle">Task Title</label>
-      <input type="text" class="form__inputs form__inputTitle input" maxlength="40">
-      <ul class="form__ul">
-      </ul>
-      <label class="form__labels form__labelTaskItem" for="task-input">Task Item</label>
-      <div class="div form__div form__divAddTask">
-        <input type="text" class="div__inputs div__inputAddTask input" maxlength="40">
-        <button class="button div__btn div__btnAddTask" disabled="true">
-          <img src="images/plus-sign.svg" class="div__img div__imgAddTask" alt="Click here to create a new task item!">
+  <body>
+    <header class="page__header header">
+      <h1 class="header__h1">CHECK <span class="header__span">YO'</span> SELF</h1>
+      <div class="header__div">
+        <button class="button header__btn" disabled="true">
+          <img src="images/search.svg" class="header__img">
         </button>
+        <input type="text" class="header__input input" placeholder="Search">
       </div>
-      <button class="button form__btns form__btnsAddTask" disabled="true">Make Task List</button>
-      <button class="button form__btns form__btnsClear" disabled="true">Clear All</button>
-    </form>
-    <hr>
-    <div class="div form__div form__divFilter">
-      <button class="button form__btns form__btnsFilter" disabled="true">Filter by Urgency</button>
-    </div>
-  </nav>
-  <main class="main">
-    <article class="main__userPrompt">
-      <p class="userPrompt__para">You haven't created any todo lists yet. Enter a task title and create new task objects in the form to the left, and click "Make Task List" to make it appear here!</p>
-    </article>
-  </main>
-  <script type="text/javascript" src="todo-list.js"></script>
-  <script type="text/javascript" src="main.js"></script>
-</body>
+    </header>
+    <nav class="nav">
+      <form class="nav__form form">
+        <label class="form__labels form__labelTitle" for="form__inputTitle">Task Title</label>
+        <input type="text" class="form__inputs form__inputTitle input" maxlength="40">
+        <ul class="form__ul">
+        </ul>
+        <label class="form__labels form__labelTaskItem" for="task-input">Task Item</label>
+        <div class="div form__div form__divAddTask">
+          <input type="text" class="div__inputs div__inputAddTask input" maxlength="40">
+          <button class="button div__btn div__btnAddTask" disabled="true">
+            <img src="images/plus-sign.svg" class="div__img div__imgAddTask" alt="Click here to   create a new task item!">
+          </button>
+        </div>
+        <button class="button form__btns form__btnsAddTask" disabled="true">Make Task List</button>
+        <button class="button form__btns form__btnsClear" disabled="true">Clear All</button>
+      </form>
+      <hr>
+      <div class="div form__div form__divFilter">
+        <button class="button form__btns form__btnsFilter" disabled="true">Filter by Urgency</button>
+      </div>
+    </nav>
+    <main class="main">
+      <article class="main__userPrompt">
+        <p class="userPrompt__para">You haven't created any todo lists yet. Enter a task title and  create new task objects in the form to the left, and click "Make Task List" to make it appear  here!</p>
+      </article>
+      <article class="main__urgencyPrompt hidden">
+        <p class="urgencyPrompt__para">You haven't marked any tasks as urgent yet. Click the "Urgent" button at the bottom of any task list to make it urgent!</p>
+      </article>
+    </main>
+    <script type="text/javascript" src="todo-list.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
