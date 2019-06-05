@@ -45,14 +45,14 @@ function enableMABtns() {
 };
 
 function disableMABtns() {
-  disableClearBtn();
+  enableClearBtn();
   if (taskTitleInput.value === '' || taskListInput.value === '') {
   makeTaskBtn.disabled = true;
   addBtn.disabled = true;
   }
 };
 
-function disableClearBtn() {
+function enableClearBtn() {
   (taskTitleInput.value === '' && taskListInput.value === '')
   clearBtn.disabled = false;
 };
@@ -69,7 +69,7 @@ function disableFilterBtn() {
   }
 };
 
-function clearBtn() {
+function clearBtn(event) {
   event.preventDefault();
   taskTitleInput.value = '';
   taskListInput.value = '';
@@ -137,6 +137,7 @@ function handleMakeTaskList() {
   enableFilterBtn();
   clearInputs();
   disableMABtns();
+  clearBtn.disabled = true;
   } else {
     event.preventDefault()
     window.alert('You must add at least one task item to your ToDo list');
